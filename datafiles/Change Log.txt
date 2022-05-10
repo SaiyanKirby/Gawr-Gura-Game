@@ -1,8 +1,8 @@
-[b_0001]
+[Build_0001]
 - project started
 - basic left/right movement and jump implemented
 
-[b_0002]
+[Build_0002]
 - added a forward attack
 - added a slime enemy (doesn't move yet)
 - added health bars
@@ -11,7 +11,7 @@
 	- you can hold the button for a longer jump
 	- you can double jump
 
-[b_0003]
+[Build_0003]
 - lots of sprite tweaks
 - adjusted forward attack, it now allows for a quick 3 hit combo
 - the forward attack now applies forward momentum (and upward in the air), which can be used as movement tech
@@ -19,10 +19,13 @@
 - new blue slime which has 5 hp instead of 3
 - slimes now have a death effect
 
-[b_0004]
+[Build_0004]
 - added this changelog to the included files
 - more sprite tweaks and small adjustments to movement
 - added a sprite for when you take damage
 - added pop-off damage/healing numbers
 - you can now hold the jump button while bouncing off an enemy for a little bit extra height, like a normal jump
 - you can no longer cancel the down stab by just letting go of down, but you can cancel it by jumping or attacking forward
+
+[Build_0005]
+-

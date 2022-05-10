@@ -53,10 +53,10 @@ bosses:
 			- boss theme: ???
 			- gravity powers
 		- fauna
-			- boss theme: ??? (a new start is too happy)
+			- boss theme: ???
 			- attacks with plants
 		- mumei
-			- boss theme: ???
+			- boss theme: ??? (a new start is too happy)
 			- abilities: ???
 		- kronii
 			- boss theme: daydream? maybe too somber
