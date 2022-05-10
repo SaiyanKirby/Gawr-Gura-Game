@@ -1,0 +1,91 @@
+---
+
+Main story beats:
+
+[Prologue]
+
+The Council, avatars created by the Gods, have been the keepers of the Natural Order for untold ages. While suffering from an internal power struggle in recent years, as devote servants of the Gods, they put their differences aside when they suddenly receive a proclamation from above: someone is planning to cause a catastrophic disturbance to the Natural Order and they must put a stop to it. Given no other information, the Council's first suspicions are cast on Myth, a ragtag group of mythological creatures that have been a thorn in their side for a while. Each member is rounded up and captured.
+
+With the other Council members preoccupied with the rest of Myth, Hakos Baelz is the one who attempts to capture Gawr Gura, but is thwarted when IRyS, the personification of Hope, a force outside the Council or Myth, stands in Baelz' way. IRyS tells both of them that there is something deeper going on, but she doesn't know how to explain it other than to just trust her and let Gura go. Gura needs to save the others, and IRyS will keep Baelz occupied for the time being. Baelz reaffirms the importance of her orders and is reluctant to let Gura go, but IRyS convinces her to wait, on one condition: should IRyS be wrong and Gura is the threat, the catshark-and-mouse game will resume.
+
+[ Main game ]
+
+You go through each level fighting off enemies until you reach the boss room of a member of the Council and fight them. After beating each boss, a short cutscene plays where they release their captive and explain the reasons for their suspicion:
+
+- Mumei captured Kiara, whose fast food empire has expanded at an alarming rate.
+- Fauna captured Calli, suspecting the forces of the undead have become restless under her hiatus.
+- Sana captured Ina, suspecting the involvement or resurrection of the Ancient Ones.
+- Kronii captured Ame, interrogating her over possibly misuse of her watch.
+
+[ Climax ]
+
+After saving all of Myth, IRyS meets up with Gura again and tries to explain what has been going on. As the personification of the Hope, she is able to sense the state of a person's heart. She senses a great, disturbing discord within both the Council, and Myth, and surmises it must actually be Baelz that the Gods were fearing, as she is the Harbinger of Chaos. Gura then goes to try to put a stop to Bae's plans, battling through her level until she reaches her. Bae is confused, wondering why IRyS left so suddenly, but is glad she gets to play with Gura after all the waiting.
+
+< Cue Hakos Baelz boss fight >
+
+After the boss fight a series of cutscenes play.
+
+Gura tries to talk Bae out of her plan to destroy the world with her powers of chaos, but Bae doesn't know what she's talking about. Bae thought the threat lied with Myth, not within the Council itself. IRyS comes in and realizes the truth in that moment: with Bae defeated, the discord she felt was not from her, but from Gura.
+
+Gura denies that she could possibly be a threat to anyone, but a wave of sudden dread overcomes her. She couldn't be...? She flashes red for a split second, and says she feels sick. She looks into a mirror in the room, and sees her reflection smirk back at her, in red. The reflection jumps out of the mirror, and the boss fight against Gawr begins.\
+
+< Cue Gawr "final" boss fight >
+
+After defeating Gawr, its form disperses into particles that drift back into Gura. The rest of Myth and Council rejoin Gura, Bae, and IRyS, and remark on how they're shocked at the idea that someone as sweet as Gura could possibly be a threat powerful enough to worry the Gods. IRyS points out that that doppelganger of Gura didn't feel like an extension of her heart, but something wholely different, and sinister.
+
+A booming voice shakes the room. It remarks that it's disappointed that the curse placed on Gura was so easily dismissed this time. A rainbow triangle appears in the air, and a laugh shakes the room again. IRyS exclaims that she can sense its presense and recognizes it. The rest of the Council feel it too; they know it by many names: The Gaze of the Observer. The Ancient Malediction. The Origin and the End: Omega Alpha.
+
+< Cue true final boss fight. >
+
+[ Epilogue ]
+
+On defeating the true source of the evil, the Gods send down another proclamation to the Council: The Natural Order is once again on the right path. They were unable to pinpoint the true cause of the disturbance, as Omega Alpha is a God itself, though one who has always maintained a simple role of observing the universe until recently. What its motivations were were unclear, but had the threat not been taken care of when it was, the curse planted on Gura had granted her power enough to destroy entire civilizations. They warn that they could not afford to let what happened to Atlantis happen again. Without elaborating further, they cease contact.
+
+After the Council finishes recounting what the Gods said to them, the group is horrified of the implications of that last part. Gura tries to say that she never knew the truth about the fall of Atlantis. She was young, and didn't remember what happened. She... couldn't have...? Ame steps in and tells her to stop thinking about it. It happened thousands of years ago. If she doesn't remember, it's for the best. She says lets all just be glad they didn't hurt anyone or each other because of some evil guy's manipulations. Gura hugs her and they all agree to have each others' backs from then on.
+
+[ Roll credits. ]
+
+---
+
+bosses:
+	- council:
+		- sana
+			- boss theme: ???
+			- gravity powers
+		- fauna
+			- boss theme: ??? (a new start is too happy)
+			- attacks with plants
+		- mumei
+			- boss theme: ???
+			- abilities: ???
+		- kronii
+			- boss theme: daydream? maybe too somber
+			- time powers
+		- bae
+			- boss theme: play dice
+			- teleports around erratically
+			- messes with your controls? might be too annoying
+
+	- final boss: gawr
+		- boss theme: reflect
+		- has all your abilities
+
+	- secret final boss: omegaα
+		- boss theme: ???
+		- flies around shooting lasers and swinging its huge sword
+
+- unlockables:
+	- increased hp
+	- increased damage
+	- moves:
+		- throw trident
+		- dash move
+			- stab forward
+			- bounce back off enemies or dash through?
+			- name it stinger for a DMC easter egg
+		- some kind of gun move
+
+- exploration:
+	- hide little shrimps in each level
+	- place them in spots where you need to revisit earlier levels with later abilities to reach
+	- collect them all for...?
