@@ -1,7 +1,7 @@
 /// @description Move Camera
 
-/*if global.game_state != game_states.main
-	{exit;};*/
+if(global.guiActive)
+	{exit;};
 
 //follow an instance
 if(instance_exists(follow))
@@ -22,17 +22,16 @@ else
 
 //clamp to within bounds of the room size
 if(global.resolution_width < room_width)
-	{x = clamp(x,(global.resolution_width/2),(room_width-(global.resolution_width/2)));};
+	{camera_x = clamp(x,(global.resolution_width/2),(room_width-(global.resolution_width/2)));};
 else
-	{x = room_width/2;};
+	{camera_x = room_width/2;};
 if(global.resolution_height < room_height)
-	{y = clamp(y,(global.resolution_height/2),(room_height-(global.resolution_height/2)));};
+	{camera_y = clamp(y,(global.resolution_height/2),(room_height-(global.resolution_height/2)));};
 else
-	{y = room_height/2;};
+	{camera_y = room_height/2;};
 
-//actually set the camera position
-camera_x = x;
-camera_y = y;
+//set hud position
 global.HUD_x = camera_x-(global.resolution_width/2);
 global.HUD_y = camera_y-(global.resolution_height/2);
-camera_set_view_pos(camera, x - floor(global.resolution_width/2), y - floor(global.resolution_height/2))
+//actually set the camera position
+camera_set_view_pos(camera, camera_x - floor(global.resolution_width/2), camera_y - floor(global.resolution_height/2))

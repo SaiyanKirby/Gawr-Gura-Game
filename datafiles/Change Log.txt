@@ -28,4 +28,6 @@
 - you can no longer cancel the down stab by just letting go of down, but you can cancel it by jumping or attacking forward
 
 [Build_0005]
--
+- Added a generic system for menu objects
+- Added a simple pause menu
+- Replaced all of the individual input variables with a single grid that tracks everything

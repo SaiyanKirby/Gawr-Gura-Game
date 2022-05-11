@@ -1,3 +1,14 @@
+if(global.guiActive)
+	{
+	//pause everything
+	for(var a = 0; a < 12; a++)
+		{
+		if(alarm[a] > 0)
+			{alarm[a]++;};
+		};
+	exit;
+	};
+
 if(!moving)//slow down if not moving
 	{
 	if(abs(x_speed) <= global.air_friction_constant)

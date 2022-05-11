@@ -8,7 +8,7 @@ function fnHurtEnemy(_damage = 1, _knockback_x = 1, _knockback_y = -1, _knockbac
 	var v_center = bbox_bottom - ((bbox_bottom - bbox_top)/2);
 	var damage_number = instance_create_depth(x, bbox_top, depth-10, objDamageNumber)
 	damage_number.damage = _damage;
-	damage_number.x_speed = sign(_knockback_x);
+	damage_number.x_speed = sign(_knockback_x) / 2;
 	
 	hp -= _damage;
 	if(hp > 0)

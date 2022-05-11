@@ -72,7 +72,7 @@ function fnGuraStateIdle()
 	{
 	image_index = 0;
 	moving = false;
-	if(global.input_left_held ^ global.input_right_held)
+	if(global.inputs[# iHELD, iLEFT] ^ global.inputs[# iHELD, iRIGHT])
 		{
 		moving = true;
 		fnGuraStateChange(gura_states.running)
@@ -85,24 +85,24 @@ function fnGuraStateIdle()
 		fnGuraStateChange(gura_states.airborne);
 		};
 	
-	if(global.input_jump_pressed) //on pressing jump, jump
+	if(global.inputs[# iPRESSED, iJUMP]) //on pressing jump, jump
 		{fnGuraActionJump();};
 	
-	else if(global.input_attack_pressed) //on pressing m1, attack
+	else if(global.inputs[# iPRESSED, iATTACK]) //on pressing m1, attack
 		{fnGuraActionAttackNeutral();};
 	};
 
 function fnGuraStateRunning()
 	{
 	//if holding left, move left
-	if(global.input_left_held && !global.input_right_held)
+	if(global.inputs[# iHELD, iLEFT] && !global.inputs[# iHELD, iRIGHT])
 		{
 		moving = true;
 		dir = -1;
 		x_speed = -run_speed;
 		};
 	//if holding right, move right
-	if(global.input_right_held && !global.input_left_held)
+	if(global.inputs[# iHELD, iRIGHT] && !global.inputs[# iHELD, iLEFT])
 		{
 		moving = true;
 		dir = 1;
@@ -119,7 +119,7 @@ function fnGuraStateRunning()
 		};
 	
 	//if not holding anything, switch to idle
-	if(!(global.input_left_held ^ global.input_right_held))
+	if(!(global.inputs[# iHELD, iLEFT] ^ global.inputs[# iHELD, iRIGHT]))
 		{
 		moving = false;
 		x_speed = 0;
@@ -134,10 +134,10 @@ function fnGuraStateRunning()
 		fnGuraStateChange(gura_states.airborne);
 		};
 	
-	if(global.input_jump_pressed)//on pressing jump, jump
+	if(global.inputs[# iPRESSED, iJUMP])//on pressing jump, jump
 		{fnGuraActionJump();};
 	
-	else if(global.input_attack_pressed)//on pressing m1, attack
+	else if(global.inputs[# iPRESSED, iATTACK])//on pressing m1, attack
 		{fnGuraActionAttackNeutral();};
 	};
 
@@ -145,14 +145,14 @@ function fnGuraStateAirborne()
 	{
 	image_index = 1;
 	//if holding left, move left
-	if(global.input_left_held && !global.input_right_held)
+	if(global.inputs[# iHELD, iLEFT] && !global.inputs[# iHELD, iRIGHT])
 		{
 		moving = true;
 		dir = -1;
 		x_speed = -run_speed;
 		};
 	//if holding right, move right
-	if(global.input_right_held && !global.input_left_held)
+	if(global.inputs[# iHELD, iRIGHT] && !global.inputs[# iHELD, iLEFT])
 		{
 		moving = true;
 		dir = 1;
@@ -161,15 +161,15 @@ function fnGuraStateAirborne()
 	image_xscale = dir;
 	
 	//if not holding left/right, stop moving
-	if(!(global.input_left_held ^ global.input_right_held))
+	if(!(global.inputs[# iHELD, iLEFT] ^ global.inputs[# iHELD, iRIGHT]))
 		{moving = false;};
 	
 	//on pressing jump, jump again
-	if(global.input_jump_pressed && jumps > 0)
+	if(global.inputs[# iPRESSED, iJUMP] && jumps > 0)
 		{fnGuraActionJump()};
 	
 	//allow more fine control over jump height
-	if(global.input_jump_held && y_speed < 0 && jump_hold_time > 0)
+	if(global.inputs[# iHELD, iJUMP] && y_speed < 0 && jump_hold_time > 0)
 		{jump_hold_time--;};
 	else
 		{
@@ -180,7 +180,7 @@ function fnGuraStateAirborne()
 	//switch to running/idle if on the ground
 	if(y_speed >= 0 && place_meeting(x, y+1, objSolidTile))
 		{
-		if(global.input_left_held ^ global.input_right_held)
+		if(global.inputs[# iHELD, iLEFT] ^ global.inputs[# iHELD, iRIGHT])
 			{
 			moving = true;
 			fnGuraStateChange(gura_states.running);
@@ -193,10 +193,10 @@ function fnGuraStateAirborne()
 		};
 	
 	//switch to attacking when an attack button is pressed
-	if(global.input_attack_pressed)
+	if(global.inputs[# iPRESSED, iATTACK])
 		{fnGuraActionAttackNeutral()}
 	//attack down if you're holding down
-	if(global.input_down_held)
+	if(global.inputs[# iHELD, iDOWN])
 		{fnGuraActionAttackDown();};
 	};
 
@@ -207,13 +207,13 @@ function fnGuraStateAttackNeutral()
 		{fnApplyGravity();};
 		
 	//if holding left, move left
-	if(global.input_left_held && !global.input_right_held)
+	if(global.inputs[# iHELD, iLEFT] && !global.inputs[# iHELD, iRIGHT])
 		{
 		moving = true;
 		x_speed = min(x_speed, run_speed * -1);
 		};
 	//if holding right, move right
-	else if(global.input_right_held && !global.input_left_held)
+	else if(global.inputs[# iHELD, iRIGHT] && !global.inputs[# iHELD, iLEFT])
 		{
 		moving = true;
 		x_speed = max(x_speed, run_speed);
@@ -237,20 +237,10 @@ function fnGuraStateAttackNeutral()
 		image_index = 3;
 		//when the trident is thrusting, disable movement
 		moving = false;
-		//on pressing jump, jump again
-		//unfortunately, this lets you just fly by alternating attacks
-		/*if(global.input_jump_pressed && jumps > 0)
-			{
-			fnGuraActionCleanUpAttacks(true);
-			fnGuraStateChange(gura_states.airborne);
-			fnGuraActionJump()
-			};
-		else if(global.input_down_held)
-			{fnGuraActionAttackDown();};
-		else*/ if(attack_combo < 3)
+		if(attack_combo < 3)
 			{
 			//allow successive attacks
-			if(global.input_attack_pressed)
+			if(global.inputs[# iPRESSED, iATTACK])
 				{fnGuraActionAttackNeutral()};
 			};
 		};
@@ -273,13 +263,13 @@ function fnGuraStateAttackDown()
 	{
 	image_index = 4;
 	//if holding left, move left
-	if(global.input_left_held && !global.input_right_held)
+	if(global.inputs[# iHELD, iLEFT] && !global.inputs[# iHELD, iRIGHT])
 		{
 		moving = true;
 		x_speed = -run_speed;
 		};
 	//if holding right, move right
-	if(global.input_right_held && !global.input_left_held)
+	if(global.inputs[# iHELD, iRIGHT] && !global.inputs[# iHELD, iLEFT])
 		{
 		moving = true;
 		x_speed = run_speed;
@@ -294,27 +284,19 @@ function fnGuraStateAttackDown()
 	trident_object.dir = dir;
 	
 	//if not holding left/right, stop moving
-	if(!(global.input_left_held ^ global.input_right_held))
+	if(!(global.inputs[# iHELD, iLEFT] ^ global.inputs[# iHELD, iRIGHT]))
 		{moving = false;};
 	
 	//on pressing jump, jump again
-	if(global.input_jump_pressed && jumps > 0)
+	if(global.inputs[# iPRESSED, iJUMP] && jumps > 0)
 		{
 		fnGuraActionCleanUpAttacks(true);
 		fnGuraStateChange(gura_states.airborne);
 		fnGuraActionJump()
 		};
-	/*
-	else if(!global.input_down_held)
-		{
-		//stop attacking if you aren't holding down
-		fnGuraActionCleanUpAttacks();
-		fnGuraStateChange(gura_states.airborne);
-		};
-	*/
 	
 	//allow more fine control over jump height
-	if(global.input_jump_held && y_speed <= 0 && jump_hold_time > 0)
+	if(global.inputs[# iHELD, iJUMP] && y_speed <= 0 && jump_hold_time > 0)
 		{jump_hold_time--;};
 	else
 		{
@@ -323,7 +305,7 @@ function fnGuraStateAttackDown()
 		};
 	
 	//allow canceling out of the down stab with a forward attack
-	if(global.input_attack_pressed)
+	if(global.inputs[# iPRESSED, iATTACK])
 		{
 		attack_combo = 0;
 		fnGuraActionAttackNeutral();
@@ -334,7 +316,7 @@ function fnGuraStateAttackDown()
 	if(y_speed >= 0 && place_meeting(x, y+1, objSolidTile))
 		{
 		fnGuraActionCleanUpAttacks(true);
-		if(global.input_left_held ^ global.input_right_held)
+		if(global.inputs[# iHELD, iLEFT] ^ global.inputs[# iHELD, iRIGHT])
 			{
 			moving = true;
 			fnGuraStateChange(gura_states.running);
@@ -372,10 +354,10 @@ function fnGuraActionAttackNeutral()
 	animation_timer = 0;
 	image_index = 2;
 	//if holding left, turn left
-	if(global.input_left_held && !global.input_right_held)
+	if(global.inputs[# iHELD, iLEFT] && !global.inputs[# iHELD, iRIGHT])
 		{dir = -1;};
 	//if holding right, turn right
-	if(global.input_right_held && !global.input_left_held)
+	if(global.inputs[# iHELD, iRIGHT] && !global.inputs[# iHELD, iLEFT])
 		{dir = 1;};
 	image_xscale = dir;
 	fnGuraActionCleanUpAttacks(false);
@@ -443,7 +425,7 @@ function fnEnemyContactDamage()
 				
 				var damage_number = instance_create_depth(x, bbox_top, depth-10, objDamageNumber)
 				damage_number.damage = _enemy.damage;
-				damage_number.x_speed = _dir;
+				damage_number.x_speed = _dir / 2;
 				
 				fnGuraActionCleanUpAttacks();
 				iframes = 30;

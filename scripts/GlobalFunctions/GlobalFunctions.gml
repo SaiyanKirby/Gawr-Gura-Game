@@ -60,3 +60,15 @@ function fnListInstances()
 	
 	return str;
 	}
+
+function fnSortGUIStack()
+	{
+	for(var i = 0; i < ds_list_size(global.guiStack); i++)
+		{
+		var _window = global.guiStack[|i];
+		if(instance_exists(_window))
+			{_window.depth = 1010 - (i * 10);};
+		else
+			{ds_list_delete(global.guiStack, i);};
+		};
+	};

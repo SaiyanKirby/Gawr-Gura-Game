@@ -1,3 +1,9 @@
+if(global.guiActive)
+	{
+	//pause everything
+	exit;
+	};
+
 switch(sprite_index)
 	{
 	default:

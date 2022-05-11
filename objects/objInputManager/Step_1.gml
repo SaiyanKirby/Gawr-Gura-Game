@@ -1,19 +1,38 @@
-global.input_left_pressed = keyboard_check_pressed(ord("A"));
-global.input_left_held = keyboard_check(ord("A"));
-global.input_left_released = keyboard_check_released(ord("A"));
+//set each part of the input grid each frame
 
-global.input_right_pressed = keyboard_check_pressed(ord("D"));
-global.input_right_held = keyboard_check(ord("D"));
-global.input_right_released = keyboard_check_released(ord("D"));
-
-global.input_down_pressed = keyboard_check_pressed(ord("S"));
-global.input_down_held = keyboard_check(ord("S"));
-global.input_down_released = keyboard_check_released(ord("S"));
-
-global.input_jump_pressed = keyboard_check_pressed(vk_space);
-global.input_jump_held = keyboard_check(vk_space);
-global.input_jump_released = keyboard_check_released(vk_space);
-
-global.input_attack_pressed = mouse_check_button_pressed(mb_left);
-global.input_attack_held = mouse_check_button(mb_left);
-global.input_attack_released = mouse_check_button_released(mb_left);
+for(var b = 0; b < iGRIDHEIGHT; b++)
+	{
+	var _device = global.inputs[# iDEVICE, b];
+	var _button = global.inputs[# iBUTTONID, b];
+	switch(_device)
+		{
+		case iKEYBOARD:
+			{
+			global.inputs[# iPRESSED, b] = keyboard_check_pressed(_button);
+			global.inputs[# iHELD, b] = keyboard_check(_button);
+			global.inputs[# iRELEASED, b] = keyboard_check_released(_button);
+			break;
+			};
+		case iMOUSE:
+			{
+			global.inputs[# iPRESSED, b] = mouse_check_button_pressed(_button);
+			global.inputs[# iHELD, b] = mouse_check_button(_button);
+			global.inputs[# iRELEASED, b] = mouse_check_button_released(_button);
+			break;
+			};
+		case iNODEVICE:
+			{
+			global.inputs[# iPRESSED, b] = false;
+			global.inputs[# iHELD, b] = false;
+			global.inputs[# iRELEASED, b] = false;
+			break;
+			};
+		default: //gamepads
+			{
+			global.inputs[# iPRESSED, b] = gamepad_button_check_pressed(_device, _button);
+			global.inputs[# iHELD, b] = gamepad_button_check(_device, _button);
+			global.inputs[# iRELEASED, b] = gamepad_button_check_released(_device, _button);
+			break;
+			};
+		};
+	};

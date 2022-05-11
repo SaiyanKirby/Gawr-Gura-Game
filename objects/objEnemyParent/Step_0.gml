@@ -1,3 +1,15 @@
+if(global.guiActive)
+	{
+	//pause everything
+	for(var a = 0; a < 12; a++)
+		{
+		if(alarm[a] > 0)
+			{alarm[a]++;};
+		};
+	image_index -= sprite_get_speed(sprite_index)/60;
+	exit;
+	};
+
 if(iframes > 0)
 	{iframes--;};
 
