@@ -1,3 +1,4 @@
+global.gravity_dir = 1;
 global.gravity_constant = 0.15;
 global.air_friction_constant = 0.1;
 

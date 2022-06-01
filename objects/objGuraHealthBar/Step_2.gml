@@ -4,7 +4,7 @@ if(!instance_exists(_parent))
 	exit;
 	};
 
-hp_percent = _parent.hp/_parent.max_hp
+hp_percent = clamp(_parent.hp/_parent.max_hp, 0, 1);
 
 lerped_percent = lerp(lerped_percent, hp_percent, 0.1);
 if(abs(lerped_percent - hp_percent) < 0.001)

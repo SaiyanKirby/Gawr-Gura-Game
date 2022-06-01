@@ -5,6 +5,7 @@
   },
   "solid": false,
   "visible": false,
+  "managed": true,
   "spriteMaskId": null,
   "persistent": false,
   "parentObjectId": null,
@@ -24,8 +25,8 @@
   "properties": [],
   "overriddenProperties": [],
   "parent": {
-    "name": "Tiles",
-    "path": "folders/Tiles.yy",
+    "name": "Level Visuals",
+    "path": "folders/Level Visuals.yy",
   },
   "resourceVersion": "1.0",
   "name": "objSolidTile",

@@ -22,6 +22,8 @@ if(iframes > 0)
 else
 	{fnEnemyContactDamage();};//check if you got hit by an enemy
 
+airborne = fnActorIsAirborne();
+
 if(knockback_time > 0)
 	{
 	image_index = 5;
@@ -55,4 +57,6 @@ if(instance_exists(trident_object))
 	{
 	trident_object.x = x;
 	trident_object.y = y;
+	trident_object.image_xscale = image_xscale;
+	trident_object.image_yscale = image_yscale;
 	};

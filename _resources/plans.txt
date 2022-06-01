@@ -51,7 +51,7 @@ bosses:
 	- council:
 		- sana
 			- boss theme: ???
-			- gravity powers
+			- reverses gravity
 		- fauna
 			- boss theme: ???
 			- attacks with plants
@@ -60,11 +60,11 @@ bosses:
 			- abilities: ???
 		- kronii
 			- boss theme: daydream? maybe too somber
-			- time powers
+			- slows down time
 		- bae
 			- boss theme: play dice
 			- teleports around erratically
-			- messes with your controls? might be too annoying
+			- throws giant dice at you
 
 	- final boss: gawr
 		- boss theme: reflect

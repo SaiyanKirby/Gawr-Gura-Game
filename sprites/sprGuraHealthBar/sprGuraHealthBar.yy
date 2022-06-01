@@ -97,8 +97,8 @@
     "resourceType": "GMNineSliceData",
   },
   "parent": {
-    "name": "GUI",
-    "path": "folders/Actors/GUI.yy",
+    "name": "Health Bars",
+    "path": "folders/Actors/Health Bars.yy",
   },
   "resourceVersion": "1.0",
   "name": "sprGuraHealthBar",

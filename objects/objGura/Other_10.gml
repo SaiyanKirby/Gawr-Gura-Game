@@ -79,7 +79,7 @@ function fnGuraStateIdle()
 		};
 	
 	//if airborn, switch to airborne state
-	if(!place_meeting(x, y+1, objSolidTile))
+	if(airborne)
 		{
 		jumps--;
 		fnGuraStateChange(gura_states.airborne);
@@ -128,7 +128,7 @@ function fnGuraStateRunning()
 		};
 	
 	//if airborn, switch to airborne
-	if(!place_meeting(x, y+1, objSolidTile))
+	if(airborne)
 		{
 		jumps--;
 		fnGuraStateChange(gura_states.airborne);
@@ -169,7 +169,7 @@ function fnGuraStateAirborne()
 		{fnGuraActionJump()};
 	
 	//allow more fine control over jump height
-	if(global.inputs[# iHELD, iJUMP] && y_speed < 0 && jump_hold_time > 0)
+	if(global.inputs[# iHELD, iJUMP] && (y_speed * global.gravity_dir) <= 0 && jump_hold_time > 0)
 		{jump_hold_time--;};
 	else
 		{
@@ -178,7 +178,7 @@ function fnGuraStateAirborne()
 		};
 	
 	//switch to running/idle if on the ground
-	if(y_speed >= 0 && place_meeting(x, y+1, objSolidTile))
+	if((y_speed * global.gravity_dir) >= 0 && !airborne)
 		{
 		if(global.inputs[# iHELD, iLEFT] ^ global.inputs[# iHELD, iRIGHT])
 			{
@@ -202,41 +202,45 @@ function fnGuraStateAirborne()
 
 function fnGuraStateAttackNeutral()
 	{
-	//only allow movement while in the air
-	if(!place_meeting(x, y+1, objSolidTile))
-		{fnApplyGravity();};
+	animation_timer++;
+	
+	var _ready_time = 7;//time to hold out the trident
+	var _end_lag = 10;//how long to keep the trident out
+	
+	if(attack_combo == 3)
+		{
+		_ready_time = 15;
+		_end_lag = 20;
+		}
+	
+	if(airborne)
+		{
+		_end_lag *= 2; //to prevent a flying exploit
 		
-	//if holding left, move left
-	if(global.inputs[# iHELD, iLEFT] && !global.inputs[# iHELD, iRIGHT])
-		{
-		moving = true;
-		x_speed = min(x_speed, run_speed * -1);
-		};
-	//if holding right, move right
-	else if(global.inputs[# iHELD, iRIGHT] && !global.inputs[# iHELD, iLEFT])
-		{
-		moving = true;
-		x_speed = max(x_speed, run_speed);
+		fnApplyGravity();
+		
+		//only allow movement while in the air
+		//if holding left, move left
+		if(global.inputs[# iHELD, iLEFT] && !global.inputs[# iHELD, iRIGHT])
+			{
+			moving = true;
+			x_speed = min(x_speed, run_speed * -1);
+			};
+		//if holding right, move right
+		else if(global.inputs[# iHELD, iRIGHT] && !global.inputs[# iHELD, iLEFT])
+			{
+			moving = true;
+			x_speed = max(x_speed, run_speed);
+			};
+		else
+			{moving = false;};
 		};
 	else
 		{moving = false;};
 	
-	animation_timer++;
-	
-	var ready_time = 7;//time to hold out the trident
-	var end_lag = 15;//how long to keep the trident out
-	
-	if(attack_combo == 3)
-		{
-		ready_time = 15;
-		end_lag = 30;
-		}
-	
-	if(animation_timer > ready_time)
+	if(animation_timer > _ready_time)
 		{
 		image_index = 3;
-		//when the trident is thrusting, disable movement
-		moving = false;
 		if(attack_combo < 3)
 			{
 			//allow successive attacks
@@ -247,15 +251,22 @@ function fnGuraStateAttackNeutral()
 	else
 		{image_index = 2;};
 	
-	if(animation_timer == ready_time)//thrust trident
+	if(animation_timer == _ready_time)//thrust trident
 		{
-		x_speed += attack_combo * 0.4 * sign(dir);//push you forward
-		if(!place_meeting(x, y+1, objSolidTile))
-			{y_speed = -1.5;};
+		if(!airborne)
+			{
+			//push you forward
+			x_speed += attack_combo * 0.4 * sign(dir);
+			};
+		else
+			{
+			//give you a little boost up when falling
+			y_speed = -1 * global.gravity_dir;
+			};
 		audio_play_sound(sndGuraAttack,0,false);
 		trident_object.image_index = 1;
 		};
-	if(animation_timer == ready_time + end_lag || animation_timer == -1)//put it away
+	if(animation_timer >= _ready_time + _end_lag || animation_timer == -1)//put it away
 		{fnGuraActionCleanUpAttacks();};
 	};
 
@@ -296,7 +307,7 @@ function fnGuraStateAttackDown()
 		};
 	
 	//allow more fine control over jump height
-	if(global.inputs[# iHELD, iJUMP] && y_speed <= 0 && jump_hold_time > 0)
+	if(global.inputs[# iHELD, iJUMP] && (y_speed * global.gravity_dir) <= 0 && jump_hold_time > 0)
 		{jump_hold_time--;};
 	else
 		{
@@ -313,7 +324,7 @@ function fnGuraStateAttackDown()
 		};
 	
 	//switch to running/idle if on the ground
-	if(y_speed >= 0 && place_meeting(x, y+1, objSolidTile))
+	if((y_speed * global.gravity_dir) >= 0 && !airborne)
 		{
 		fnGuraActionCleanUpAttacks(true);
 		if(global.inputs[# iHELD, iLEFT] ^ global.inputs[# iHELD, iRIGHT])
@@ -336,9 +347,9 @@ function fnGuraActionJump()
 	{
 	jumps--;
 	jump_hold_time = jump_hold_time_max;
-	y_speed = jump_height;
+	y_speed = jump_height * global.gravity_dir;
 	var _jumpeffect = instance_create_depth(x, y, depth+1, objGuraJumpParticle);
-	if(instance_place(x, y+1, objSolidTile))
+	if(!airborne)
 		{_jumpeffect.sprite_index = sprGuraJumpParticleGround};
 	else
 		{_jumpeffect.sprite_index = sprGuraJumpParticleAir};
@@ -368,7 +379,8 @@ function fnGuraActionAttackNeutral()
 	if(attack_combo == 3)
 		{trident_object.damage = 2;};
 	trident_object.image_index = 0;
-	trident_object.image_xscale = dir;
+	trident_object.image_xscale = image_xscale;
+	trident_object.image_yscale = image_yscale;
 	trident_object.dir = dir;
 	fnGuraStateChange(gura_states.attack_neutral);
 	};
@@ -380,7 +392,8 @@ function fnGuraActionAttackDown()
 	trident_object._parent = self;
 	trident_object.sprite_index = sprGuraTridentDown;
 	trident_object.image_index = 0;
-	trident_object.image_xscale = dir;
+	trident_object.image_xscale = image_xscale;
+	trident_object.image_yscale = image_yscale;
 	trident_object.dir = dir;
 	trident_object.x = x;
 	fnGuraStateChange(gura_states.attack_down);
@@ -392,7 +405,7 @@ function fnGuraActionCleanUpAttacks(reset_combo = true)
 	animation_timer = 0;
 	if(reset_combo)
 		{attack_combo = 0;};
-	if(place_meeting(x, y+1, objSolidTile)) //if on the ground, switch to idle
+	if(!airborne) //if on the ground, switch to idle
 		{fnGuraStateChange(gura_states.idle)};
 	else //if airborn, switch to airborne
 		{fnGuraStateChange(gura_states.airborne)};
@@ -433,7 +446,7 @@ function fnEnemyContactDamage()
 				animation_timer = 0;
 				alarm[0] = hp_regen_time;//reset hp regen delay
 				x_speed = _enemy.knockback_x * sign(_dir);
-				y_speed = _enemy.knockback_y;
+				y_speed = _enemy.knockback_y * global.gravity_dir;
 				if(_dir != 0)
 					{
 					dir = -_dir;

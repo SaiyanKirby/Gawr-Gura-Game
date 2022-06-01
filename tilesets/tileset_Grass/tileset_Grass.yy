@@ -2936,7 +2936,7 @@
   },
   "parent": {
     "name": "Tile Sets",
-    "path": "folders/Tiles/Tile Sets.yy",
+    "path": "folders/Level Visuals/Tile Sets.yy",
   },
   "resourceVersion": "1.0",
   "name": "tileset_Grass",

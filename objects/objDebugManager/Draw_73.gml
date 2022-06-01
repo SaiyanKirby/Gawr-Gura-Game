@@ -11,3 +11,11 @@ if(show_camera)
 		draw_set_color(c_white)
 		};
 	};
+
+if(show_gura_info)
+	{
+	with(objGura)
+		{
+		draw_rectangle_color(bbox_left,bbox_top,bbox_right,bbox_bottom,c_red,c_red,c_red,c_red,true);
+		};
+	};

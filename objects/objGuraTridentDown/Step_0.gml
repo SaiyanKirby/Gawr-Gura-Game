@@ -38,7 +38,7 @@ if(hitbox_active)
 			if(_index == -1 && instance_exists(_enemy))
 				{
 				var _dir = sign(x - _enemy.x) * -1;
-				var _hit = _enemy.fnHurtEnemy(damage, knockback_x * _dir, knockback_y, knockback_time, enemy_hurtbox_disable_time);
+				var _hit = _enemy.fnHurtEnemy(damage, knockback_x * _dir, knockback_y * global.gravity_dir, knockback_time, enemy_hurtbox_disable_time);
 				if(_hit)
 					{
 					ds_list_add(enemies_hit, _enemy);
@@ -54,13 +54,13 @@ if(hitbox_active)
 				{
 				//bouncing while holding the button gives you a cancelable full-height jump
 				//otherwise, just slightly higher than normal jump with no fine control
-				if(global.input_jump_held)
+				if(global.inputs[# iJUMP, iHELD])
 					{
-					y_speed = jump_height;
+					y_speed = jump_height * global.gravity_dir;
 					jump_hold_time = jump_hold_time_max;
 					}
 				else
-					{y_speed = jump_height * 1.25;};
+					{y_speed = jump_height * 1.25 * global.gravity_dir;};
 				jumps = max_jumps-1;
 				jump_hold_time = jump_hold_time_max;
 				};

@@ -28,6 +28,17 @@
 - you can no longer cancel the down stab by just letting go of down, but you can cancel it by jumping or attacking forward
 
 [Build_0005]
-- Added a generic system for menu objects
+- Under the hood work:
+	- Replaced all of the individual input variables with a single grid that tracks everything
+	- Added a generic system for menu objects, though it's still incomplete
+	- Made all the collision and movement code work with reversed gravity (reverse it with W)
 - Added a simple pause menu
-- Replaced all of the individual input variables with a single grid that tracks everything
+- Added a parallax cloudy sky background
+- Improved the trident sprites
+- Minor sprite palette changes
+- Adjustments on attack physics:
+	- Attacks in the air no longer gives you horizontal momentum (but still gives a slight upward boost).
+	- Attacks in the air have a longer end lag.
+	- The above changes are to hopefully prevent flying exploits.
+	- You can no longer move left/right while attacking on the ground (you still can in the air)
+	These adjustments are subject to change if they don't feel right.

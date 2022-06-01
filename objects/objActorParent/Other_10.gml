@@ -1,14 +1,33 @@
 /// @description Function declarations
 
+function fnActorCollide(_x = 0, _y = 0)
+	{
+	//extend for tile-based collision at some point?
+	var _collide = place_meeting(_x, _y, objSolidTile) && !place_meeting(x, y, objSolidTile);
+	//dont consider collisions if you're already inside an object ^
+	if(_y <= 0 || _y >= room_height)
+		{_collide = true;};
+	return _collide;
+	};
+
+function fnActorIsAirborne()
+	{
+	//an actor is airborne if they're not colliding with the ground,
+	var _collide = fnActorCollide(x, y + global.gravity_dir);
+	//OR if they're moving away from the ground that frame
+	var _falling = sign(y_speed) = -global.gravity_dir;
+	return !_collide || _falling;
+	};
+
 function fnActorMove()
 	{
 	//set up temporary variables for readability
+	var x_direction = sign(x_speed);
+	var y_direction = sign(y_speed);
 	var x_fraction = frac(x_speed);
 	var y_fraction = frac(y_speed);
 	var x_speed_rounded = round(x_speed - x_fraction);
 	var y_speed_rounded = round(y_speed - y_fraction);
-	var x_direction = sign(x_speed);
-	var y_direction = sign(y_speed);
 	
 	//manage subpixels
 	x_subpixel += x_fraction;
@@ -29,7 +48,7 @@ function fnActorMove()
 		{
 		repeat(abs(x_speed_rounded))
 			{
-			if(place_meeting(x + x_direction, y, objSolidTile))
+			if(fnActorCollide(x + x_direction, y))
 				{
 				x_speed = 0;
 				x_subpixel = 0;
@@ -45,7 +64,7 @@ function fnActorMove()
 		{
 		repeat(abs(y_speed_rounded))
 			{
-			if(place_meeting(x, y + y_direction, objSolidTile))
+			if(fnActorCollide(x, y + y_direction))
 				{
 				y_speed = 0;
 				y_subpixel = 0;
@@ -56,14 +75,29 @@ function fnActorMove()
 			};
 		};
 	
+	airborne = fnActorIsAirborne();
+	
 	//clamp final position
 	x = clamp(x, 0, room_width);
-	y = clamp(y, 8, room_height);
+	y = clamp(y, 0, room_height);
 	};
 
 function fnApplyGravity()
 	{
 	//add gravity
-	if(!place_meeting(x, y+1, objSolidTile) && y_speed < terminal_velocity)
-		{y_speed += global.gravity_constant;};
+	if(affected_by_gravity)
+		{
+		if(y_speed < terminal_velocity)
+			{y_speed += global.gravity_constant * global.gravity_dir;};
+		};
 	};
+
+function fnSwitchGravity()
+	{
+	global.gravity_dir *= -1;
+	with(objActorParent)
+		{
+		if(affected_by_gravity)
+			{image_yscale *= -1;}
+		}
+	}

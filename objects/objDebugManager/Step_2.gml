@@ -40,6 +40,8 @@ with(objGura)
 		max_hp = clamp(max_hp-1, 1, 20);
 		hp = clamp(hp, 1, max_hp);
 		};
+	if(keyboard_check_pressed(ord("W")))
+		{fnSwitchGravity();};
 	};
 
 if(keyboard_check_pressed(vk_f1))
@@ -58,7 +60,7 @@ Attack Forward: Left Mouse Button
 
 Attack Downward: S while in the air
 * - The downward stab bounces off of enemies and doing so refreshes your double jump.
-* - Holding jump bounces you higher
+* - Holding jump on a bounce bounces you higher
 ";
 	show_message(_str);
 	};
@@ -66,11 +68,13 @@ Attack Downward: S while in the air
 if(keyboard_check_pressed(vk_f2))
 	{
 	var _str =	@"- Debug Controls -
-				
+
 CTRL + i: Toggle a list of all active instances.
 CTRL + c: Toggle displaying the camera object and what it's following.
 CTRL + g: Toggle a display of basic state information for Gura.
-				
+
+W: Reverse gravity direction globally.
+
 Numpad Plus: Increase Gura's Max HP by 1 (max 25).
 Numpad Minus: Decrease Gura's Max HP by 1 (max 1).
 				

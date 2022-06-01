@@ -33,7 +33,7 @@ if(hitbox_active)
 				{
 				if(_enemy.alive)
 					{
-					var _hit = _enemy.fnHurtEnemy(damage, knockback_x * dir, knockback_y, knockback_time, enemy_hurtbox_disable_time);
+					var _hit = _enemy.fnHurtEnemy(damage, knockback_x * dir, knockback_y * global.gravity_dir, knockback_time, enemy_hurtbox_disable_time);
 					if(_hit)
 						{
 						ds_list_add(enemies_hit, _enemy);

@@ -12,7 +12,7 @@ enum gura_states
 	attack_up,
 	};
 
-_healthbar = instance_create_depth(0, 0, depth, objGuraHealthBar);
+_healthbar = instance_create_depth(0, 0, 0, objGuraHealthBar);
 _healthbar._parent = self;
 alarm[0] = hp_regen_time//by default, regen 1 hp every 2 seconds
 

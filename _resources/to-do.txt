@@ -1,0 +1,79 @@
+- Pause Menu
+	- Options
+	- Skip Cutscene
+	- Return to level select
+	- Quit game
+
+- Options Menu
+	- Change window size / fullscreen
+	- Change controls
+	- Change volume (separate values for BGM, SFX
+
+- Controller work
+	- Create scripts to check pressed/released/held for analogue sticks
+
+- Cutscene System
+	- Control arbitrary objects
+	- Initiate dialogue
+	- Skippable in the pause menu, set all objects to their final states
+
+- Dialogue System
+	- Display character face and name on the left
+	- Advance by pressing [jump] or [attack]
+	- Text displays instantly, not letter by letter
+	- Sound effect with every new block of text
+
+- Title Screen
+	- Visuals
+	- BGM
+	- Selections: New Game, Load Game, Options, Quit
+
+- Level Select Screen
+	- Pick any of Fauna/Mumei/Sana/Kronii levels, then when all 4 are beat, unlock Bae's level
+	- Display collected golden shrimps
+
+- New attacks
+	- Dash
+	- Gun
+	- ???
+
+Levels:
+	- Fauna
+		- Background(s)
+		- Tileset(s)
+		- BGM
+		- (What mechanic?)
+		- Boss Fight
+		- Cutscene
+
+	- Mumei
+		- Background(s)
+		- Tileset(s)
+		- BGM
+		- (What mechanic?)
+		- Boss Fight
+		- Cutscene
+
+	- Sana
+		- Background(s)
+		- Tileset(s)
+		- BGM
+		- Gravity mechanic
+		- Boss Fight
+		- Cutscene
+
+	- Kronii
+		- Background(s)
+		- Tileset(s)
+		- BGM
+		- Time slow/freeze mechanic
+		- Boss Fight
+		- Cutscene
+
+	- Bae
+		- Background(s)
+		- Tileset(s)
+		- BGM
+		- (What mechanic?)
+		- Final Boss Fight(s)
+		- Cutscene(s)

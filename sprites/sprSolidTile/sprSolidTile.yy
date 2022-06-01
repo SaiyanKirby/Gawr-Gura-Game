@@ -71,8 +71,8 @@
   ],
   "nineSlice": null,
   "parent": {
-    "name": "Tiles",
-    "path": "folders/Tiles.yy",
+    "name": "Level Visuals",
+    "path": "folders/Level Visuals.yy",
   },
   "resourceVersion": "1.0",
   "name": "sprSolidTile",
