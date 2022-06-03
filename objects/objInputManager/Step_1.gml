@@ -1,5 +1,7 @@
 //set each part of the input grid each frame
 
+fnInputGetStickValues();//set up the array of gamepad raw analogue stick values
+
 for(var b = 0; b < iGRIDHEIGHT; b++)
 	{
 	var _device = global.inputs[# iDEVICE, b];
@@ -29,9 +31,18 @@ for(var b = 0; b < iGRIDHEIGHT; b++)
 			};
 		default: //gamepads
 			{
-			global.inputs[# iPRESSED, b] = gamepad_button_check_pressed(_device, _button);
-			global.inputs[# iHELD, b] = gamepad_button_check(_device, _button);
-			global.inputs[# iRELEASED, b] = gamepad_button_check_released(_device, _button);
+			if(_button >= gp_stickLleft && _button <= gp_stickRdown)
+				{
+				global.inputs[# iPRESSED, b] = fnAnalogueCheckPressed(_device, _button);
+				global.inputs[# iHELD, b] = fnAnalogueCheck(_device, _button);
+				global.inputs[# iRELEASED, b] = fnAnalogueCheckReleased(_device, _button);
+				};
+			else
+				{
+				global.inputs[# iPRESSED, b] = gamepad_button_check_pressed(_device, _button);
+				global.inputs[# iHELD, b] = gamepad_button_check(_device, _button);
+				global.inputs[# iRELEASED, b] = gamepad_button_check_released(_device, _button);
+				};
 			break;
 			};
 		};

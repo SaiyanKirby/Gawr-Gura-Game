@@ -51,3 +51,7 @@
 - Added button remapping. Supports keyboard, mouse, and xinput gamepads*.
 - * Gamepad analogue sticks are not able to be mapped yet, that will be done later.
 - There's no logic to prevent you breaking your controls, for example by unmapping confirm. In case you break something, press F3 to reset all the controls to default.
+
+[Build_0007]
+- Slightly reduced maximum jump height
+- Added support for binding analogue stick inputs to actions

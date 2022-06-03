@@ -106,14 +106,27 @@ function fnGetButtonName(_button = 0)
 				case gp_shoulderl:{return "(L2)";};
 				case gp_shoulderrb:{return "(R1)";};
 				case gp_shoulderr:{return "(R2)";};
+				
 				case gp_select:{return "(Select)";};
 				case gp_start:{return "(Start)";};
+				
 				case gp_stickl:{return "(L3)";};
 				case gp_stickr:{return "(R3)";};
+				
 				case gp_padu:{return "(DPad Up)";};
 				case gp_padd:{return "(DPad Down)";};
 				case gp_padl:{return "(Dpad Left)";};
 				case gp_padr:{return "(DPad Right)";};
+				
+				case gp_stickLleft:{return "(LS Left)";};
+				case gp_stickLright:{return "(LS Right)";};
+				case gp_stickLup:{return "(LS Up)";};
+				case gp_stickLdown:{return "(LS Down)";};
+				
+				case gp_stickRleft:{return "(RS Left)";};
+				case gp_stickRright:{return "(RS Right)";};
+				case gp_stickRup:{return "(RS Up)";};
+				case gp_stickRdown:{return "(RS Down)";};
 				};
 			};
 		};

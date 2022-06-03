@@ -3,8 +3,6 @@ var fh = global.font_height / 2;
 var fw = global.font_width / 2;
 draw_set_font(global.fontDebug);
 
-//draw_text(2,0,string(ds_list_size(global.guiStack)));
-
 if(show_instances)
 	{
 	var xx = padding;

@@ -1,13 +1,14 @@
 - Pause Menu
-	- Options
-	- Skip Cutscene
-	- Return to level select
-	- Quit game
+	- Add "Skip Cutscene" button (when a cutscene is active)
+	- Add "Return to level select" button
 
 - Options Menu
 	- Change window size / fullscreen
-	- Change controls
 	- Change volume (separate values for BGM, SFX
+	- Fix button remap logic:
+		- remove unbinding buttons
+		- when binding a button to multiple actions, swap both buttons
+		- allow binding duplicate buttons to confirm and back, but not each other
 
 - Controller work
 	- Create scripts to check pressed/released/held for analogue sticks

@@ -23,9 +23,20 @@
 #macro iKEYBOARD -2
 #macro iMOUSE -3
 
+//for analogue sticks
+#macro gp_stickLleft 10000
+#macro gp_stickLright 10001
+#macro gp_stickLup 10002
+#macro gp_stickLdown 10003
+#macro gp_stickRleft 10004
+#macro gp_stickRright 10005
+#macro gp_stickRup 10006
+#macro gp_stickRdown 10007
+
 #endregion macros
 
 global.inputs = ds_grid_create(iGRIDWIDTH, iGRIDHEIGHT);
+fnInitializeInputs();
 /*
 each row is one button
 collumns: input device, button ID, pressed, held, released
@@ -37,32 +48,10 @@ input types:
 	gamepad = gamepad ID (0 and up)
 */
 
-#region analogue stick variable/functions
-
-/*analogue_deadzone = 0.75; //how far a stick has to be pushed to register
-analogue_sticks = ds_list_create(); //track all analogue sticks
-analogue_sticks_previous = ds_list_create(); //for comparing to last frame
-
-//initialize list
-for(var i = 0; i <= 11; i++)
-	{ds_list_add(analogue_sticks, [0,0,0,0]);};
-
-function fnInputGetStickValues()
-	{
-	for(var i = 0; i < gamepad_get_device_count(); i++)
-		{
-		if(gamepad_is_connected(i))
-			{
-			var _LH = gamepad_axis_value(i, gp_axislh);
-			var _LV = gamepad_axis_value(i, gp_axislv);
-			var _RH = gamepad_axis_value(i, gp_axisrh);
-			var _RV = gamepad_axis_value(i, gp_axisrv);
-			//create an array of the left and right stick values
-			analogue_sticks[| i] = [_LH, _LV, _RH, _RV];
-			};
-		};
-	};*/
-
-#endregion
-
-fnInitializeInputs();
+//analogue stick variable/functions
+global.analogue_deadzone = 0.5; //how far a stick has to be pushed to register
+global.analogue_sticks = ds_list_create(); //track all analogue sticks
+global.analogue_sticks_previous = ds_list_create(); //for comparing to last frame
+for(var i = 0; i < 4; i++)
+	{ds_list_add(global.analogue_sticks, [0,0,0,0]);};
+ds_list_copy(global.analogue_sticks_previous, global.analogue_sticks);

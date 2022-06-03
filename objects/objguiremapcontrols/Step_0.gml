@@ -38,36 +38,45 @@ if(mouse_check_button_pressed(mb_any))
 //check gamepads
 for(var i = 0; i < 4; i++)
 	{
-	var _button_pressed = -100;
-	if(gamepad_button_check_pressed(i, gp_face1)){_button_pressed = gp_face1;};
-	if(gamepad_button_check_pressed(i, gp_face2)){_button_pressed = gp_face2;};
-	if(gamepad_button_check_pressed(i, gp_face3)){_button_pressed = gp_face3;};
-	if(gamepad_button_check_pressed(i, gp_face4)){_button_pressed = gp_face4;};
-	if(gamepad_button_check_pressed(i, gp_shoulderlb)){_button_pressed = gp_shoulderlb;};
-	if(gamepad_button_check_pressed(i, gp_shoulderl)){_button_pressed = gp_shoulderl;};
-	if(gamepad_button_check_pressed(i, gp_shoulderrb)){_button_pressed = gp_shoulderrb;};
-	if(gamepad_button_check_pressed(i, gp_shoulderr)){_button_pressed = gp_shoulderr;};
-	if(gamepad_button_check_pressed(i, gp_select)){_button_pressed = gp_select;};
-	if(gamepad_button_check_pressed(i, gp_start)){_button_pressed = gp_start;};
-	if(gamepad_button_check_pressed(i, gp_stickl)){_button_pressed = gp_stickl;};
-	if(gamepad_button_check_pressed(i, gp_stickr)){_button_pressed = gp_stickr;};
-	if(gamepad_button_check_pressed(i, gp_padu)){_button_pressed = gp_padu;};
-	if(gamepad_button_check_pressed(i, gp_padd)){_button_pressed = gp_padd;};
-	if(gamepad_button_check_pressed(i, gp_padl)){_button_pressed = gp_padl;};
-	if(gamepad_button_check_pressed(i, gp_padr)){_button_pressed = gp_padr;};
-	
-	if(_button_pressed != -100)
+	if(gamepad_is_connected(i))
 		{
-		if(global.inputs[# iDEVICE, button_to_remap] == i && global.inputs[# iBUTTONID, button_to_remap] == _button_pressed)
+		var _button_pressed = -100;
+		if(gamepad_button_check_pressed(i, gp_face1)){_button_pressed = gp_face1;};
+		if(gamepad_button_check_pressed(i, gp_face2)){_button_pressed = gp_face2;};
+		if(gamepad_button_check_pressed(i, gp_face3)){_button_pressed = gp_face3;};
+		if(gamepad_button_check_pressed(i, gp_face4)){_button_pressed = gp_face4;};
+	
+		if(gamepad_button_check_pressed(i, gp_shoulderlb)){_button_pressed = gp_shoulderlb;};
+		if(gamepad_button_check_pressed(i, gp_shoulderl)){_button_pressed = gp_shoulderl;};
+		if(gamepad_button_check_pressed(i, gp_shoulderrb)){_button_pressed = gp_shoulderrb;};
+		if(gamepad_button_check_pressed(i, gp_shoulderr)){_button_pressed = gp_shoulderr;};
+	
+		if(gamepad_button_check_pressed(i, gp_select)){_button_pressed = gp_select;};
+		if(gamepad_button_check_pressed(i, gp_start)){_button_pressed = gp_start;};
+	
+		if(gamepad_button_check_pressed(i, gp_stickl)){_button_pressed = gp_stickl;};
+		if(gamepad_button_check_pressed(i, gp_stickr)){_button_pressed = gp_stickr;};
+	
+		if(gamepad_button_check_pressed(i, gp_padu)){_button_pressed = gp_padu;};
+		if(gamepad_button_check_pressed(i, gp_padd)){_button_pressed = gp_padd;};
+		if(gamepad_button_check_pressed(i, gp_padl)){_button_pressed = gp_padl;};
+		if(gamepad_button_check_pressed(i, gp_padr)){_button_pressed = gp_padr;};
+	
+		if(fnAnalogueCheckPressed(i, gp_stickLleft)){_button_pressed = gp_stickLleft;};
+		if(fnAnalogueCheckPressed(i, gp_stickLright)){_button_pressed = gp_stickLright;};
+		if(fnAnalogueCheckPressed(i, gp_stickLup)){_button_pressed = gp_stickLup;};
+		if(fnAnalogueCheckPressed(i, gp_stickLdown)){_button_pressed = gp_stickLdown;};
+	
+		if(fnAnalogueCheckPressed(i, gp_stickRleft)){_button_pressed = gp_stickRleft;};
+		if(fnAnalogueCheckPressed(i, gp_stickRright)){_button_pressed = gp_stickRright;};
+		if(fnAnalogueCheckPressed(i, gp_stickRup)){_button_pressed = gp_stickRup;};
+		if(fnAnalogueCheckPressed(i, gp_stickRdown)){_button_pressed = gp_stickRdown;};
+	
+		if(_button_pressed != -100)
 			{
 			global.inputs[# iDEVICE, button_to_remap] = i;
-			global.inputs[# iBUTTONID, button_to_remap] = 0;
-			}
-		else
-			{
-			global.inputs[# iDEVICE, button_to_remap] = i;
-			global.inputs[# iBUTTONID, button_to_remap] = _button_pressed
+			global.inputs[# iBUTTONID, button_to_remap] = _button_pressed;
+			instance_destroy();
 			};
-		instance_destroy();
 		};
 	};

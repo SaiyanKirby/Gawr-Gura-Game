@@ -46,7 +46,7 @@ with(objGura)
 		max_hp = clamp(max_hp-1, 1, 20);
 		hp = clamp(hp, 1, max_hp);
 		};
-	if(!global.guiActive && keyboard_check_pressed(ord("G")) && !ctrl_pressed)
+	if(!global.guiActive && keyboard_check_pressed(ord("G")) && !ctrl_held)
 		{fnSwitchGravity();};
 	};
 
