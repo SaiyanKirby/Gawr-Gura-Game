@@ -33,6 +33,7 @@
     {"propertyId":{"name":"knockback_y","path":"objects/objGuraAttackParent/objGuraAttackParent.yy",},"objectId":{"name":"objGuraAttackParent","path":"objects/objGuraAttackParent/objGuraAttackParent.yy",},"value":"-1","resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMOverriddenProperty",},
     {"propertyId":{"name":"knockback_time","path":"objects/objGuraAttackParent/objGuraAttackParent.yy",},"objectId":{"name":"objGuraAttackParent","path":"objects/objGuraAttackParent/objGuraAttackParent.yy",},"value":"6","resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMOverriddenProperty",},
     {"propertyId":{"name":"enemy_hurtbox_disable_time","path":"objects/objGuraAttackParent/objGuraAttackParent.yy",},"objectId":{"name":"objGuraAttackParent","path":"objects/objGuraAttackParent/objGuraAttackParent.yy",},"value":"15","resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMOverriddenProperty",},
+    {"propertyId":{"name":"hitbox_active","path":"objects/objGuraAttackParent/objGuraAttackParent.yy",},"objectId":{"name":"objGuraAttackParent","path":"objects/objGuraAttackParent/objGuraAttackParent.yy",},"value":"True","resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMOverriddenProperty",},
   ],
   "parent": {
     "name": "Attacks",

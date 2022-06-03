@@ -22,15 +22,17 @@
   "physicsKinematic": false,
   "physicsShapePoints": [],
   "eventList": [
+    {"isDnD":false,"eventNum":64,"eventType":8,"collisionObjectId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
     {"isDnD":false,"eventNum":0,"eventType":0,"collisionObjectId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
     {"isDnD":false,"eventNum":0,"eventType":3,"collisionObjectId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
-    {"isDnD":false,"eventNum":64,"eventType":8,"collisionObjectId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
   ],
   "properties": [],
   "overriddenProperties": [
+    {"propertyId":{"name":"padding","path":"objects/objGUIWindowParent/objGUIWindowParent.yy",},"objectId":{"name":"objGUIWindowParent","path":"objects/objGUIWindowParent/objGUIWindowParent.yy",},"value":"16","resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMOverriddenProperty",},
+    {"propertyId":{"name":"height","path":"objects/objGUIWindowParent/objGUIWindowParent.yy",},"objectId":{"name":"objGUIWindowParent","path":"objects/objGUIWindowParent/objGUIWindowParent.yy",},"value":"32","resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMOverriddenProperty",},
+    {"propertyId":{"name":"width","path":"objects/objGUIWindowParent/objGUIWindowParent.yy",},"objectId":{"name":"objGUIWindowParent","path":"objects/objGUIWindowParent/objGUIWindowParent.yy",},"value":"360","resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMOverriddenProperty",},
     {"propertyId":{"name":"text","path":"objects/objGUIWindowParent/objGUIWindowParent.yy",},"objectId":{"name":"objGUIWindowParent","path":"objects/objGUIWindowParent/objGUIWindowParent.yy",},"value":"\"\"","resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMOverriddenProperty",},
-    {"propertyId":{"name":"selections","path":"objects/objGUIWindowParent/objGUIWindowParent.yy",},"objectId":{"name":"objGUIWindowParent","path":"objects/objGUIWindowParent/objGUIWindowParent.yy",},"value":"3","resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMOverriddenProperty",},
-    {"propertyId":{"name":"width","path":"objects/objGUIWindowParent/objGUIWindowParent.yy",},"objectId":{"name":"objGUIWindowParent","path":"objects/objGUIWindowParent/objGUIWindowParent.yy",},"value":"208","resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMOverriddenProperty",},
+    {"propertyId":{"name":"selections","path":"objects/objGUIWindowParent/objGUIWindowParent.yy",},"objectId":{"name":"objGUIWindowParent","path":"objects/objGUIWindowParent/objGUIWindowParent.yy",},"value":"10","resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMOverriddenProperty",},
     {"propertyId":{"name":"selection","path":"objects/objGUIWindowParent/objGUIWindowParent.yy",},"objectId":{"name":"objGUIWindowParent","path":"objects/objGUIWindowParent/objGUIWindowParent.yy",},"value":"1","resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMOverriddenProperty",},
   ],
   "parent": {
@@ -38,7 +40,7 @@
     "path": "folders/GUI/Windows.yy",
   },
   "resourceVersion": "1.0",
-  "name": "objGUIPauseWindow",
+  "name": "objGUIControlsWindow",
   "tags": [],
   "resourceType": "GMObject",
 }

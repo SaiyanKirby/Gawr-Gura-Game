@@ -12,10 +12,18 @@ if(show_camera)
 		};
 	};
 
-if(show_gura_info)
+if(show_hitboxes)
 	{
 	with(objGura)
+		{draw_rectangle_color(bbox_left,bbox_top,bbox_right-1,bbox_bottom-1,c_red,c_red,c_red,c_red,true);};
+	with(objGura.trident_object)
 		{
-		draw_rectangle_color(bbox_left,bbox_top,bbox_right,bbox_bottom,c_red,c_red,c_red,c_red,true);
+		if(hitbox_active)
+			{draw_rectangle_color(bbox_left,bbox_top,bbox_right-1,bbox_bottom-1,c_red,c_red,c_red,c_red,true);};
+		};
+	with(objEnemyParent)
+		{
+		if(hitbox_active)
+			{draw_rectangle_color(bbox_left,bbox_top,bbox_right-1,bbox_bottom-1,c_red,c_red,c_red,c_red,true);};
 		};
 	};

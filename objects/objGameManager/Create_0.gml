@@ -2,7 +2,7 @@
 
 #region #define global variables
 
-global.build_number = "0005"
+global.build_number = "0006"
 
 global.fontDamageNumber = font_add_sprite(sprFontDamageNumber, ord("!"), false, 1);
 global.fontMain = fontFredokaOne20p;
@@ -10,8 +10,6 @@ global.fontDebug = fontFredokaOne10p;
 draw_set_font(global.fontMain);
 global.font_width = string_width("O");
 global.font_height = string_height("O");
-
-global.gamePaused = false;
 
 #endregion
 

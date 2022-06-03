@@ -42,3 +42,12 @@
 	- The above changes are to hopefully prevent flying exploits.
 	- You can no longer move left/right while attacking on the ground (you still can in the air)
 	These adjustments are subject to change if they don't feel right.
+
+[Build_0006]
+- Added a debug command to display hitboxes as red outlines when they're active (CTRL+H)
+- Changed the switch gravity button from W to G.
+- Fixed the parallax clouds not tiling.
+- Added menu selections to the pause menu. The "Options" selection brings up a button remap screen.
+- Added button remapping. Supports keyboard, mouse, and xinput gamepads*.
+- * Gamepad analogue sticks are not able to be mapped yet, that will be done later.
+- There's no logic to prevent you breaking your controls, for example by unmapping confirm. In case you break something, press F3 to reset all the controls to default.

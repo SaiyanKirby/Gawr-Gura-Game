@@ -1,0 +1,1 @@
+depth = -1000 - (ds_list_size(global.guiStack) * 10) + 1;

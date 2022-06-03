@@ -10,6 +10,9 @@ var c_held= keyboard_check(ord("C"));
 var g_pressed = keyboard_check_pressed(ord("G"));
 var g_held= keyboard_check(ord("G"));
 
+var h_pressed = keyboard_check_pressed(ord("H"));
+var h_held= keyboard_check(ord("H"));
+
 if((ctrl_pressed && i_held) || (ctrl_held && i_pressed))
 	{show_instances = !show_instances;}
 
@@ -18,6 +21,9 @@ if((ctrl_pressed && c_held) || (ctrl_held && c_pressed))
 
 if((ctrl_pressed && g_held) || (ctrl_held && g_pressed))
 	{show_gura_info = !show_gura_info}
+
+if((ctrl_pressed && h_held) || (ctrl_held && h_pressed))
+	{show_hitboxes = !show_hitboxes}
 
 if(show_instances)
 	{
@@ -40,7 +46,7 @@ with(objGura)
 		max_hp = clamp(max_hp-1, 1, 20);
 		hp = clamp(hp, 1, max_hp);
 		};
-	if(keyboard_check_pressed(ord("W")))
+	if(!global.guiActive && keyboard_check_pressed(ord("G")) && !ctrl_pressed)
 		{fnSwitchGravity();};
 	};
 
@@ -80,6 +86,10 @@ Numpad Minus: Decrease Gura's Max HP by 1 (max 1).
 				
 F1: Opens a window showing the basic controls.
 F2: Opens this window.
+F3: Resets all controls to default.
 ";
 	show_message(_str);
 	};
+
+if(keyboard_check_pressed(vk_f3))
+	{fnInitializeInputs();};

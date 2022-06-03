@@ -51,7 +51,7 @@ var h = fh + (padding * 2);
 draw_rectangle(0, global.HUD_height - h, global.HUD_width, global.HUD_height, false);
 draw_set_alpha(1);
 draw_set_color(c_white)
-draw_text(padding, global.HUD_height - h + padding, "Press F1 for the basic controls. Press F2 for debug hotkeys.");
+draw_text(padding, global.HUD_height - h + padding, "Press F1 for the default controls. Press F2 for debug hotkeys. Press F3 to reset controls to default.");
 draw_set_halign(fa_right);
 draw_text(global.HUD_width-padding, global.HUD_height - h + padding, _str);
 draw_set_halign(fa_left);

@@ -37,24 +37,32 @@ input types:
 	gamepad = gamepad ID (0 and up)
 */
 
-#region initialize values
+#region analogue stick variable/functions
 
-//set all inputs to keyboard
-ds_grid_set_region(global.inputs, iDEVICE, 0, iDEVICE, iGRIDHEIGHT-1, iKEYBOARD);
-//set all pressed/held/released to false
-ds_grid_set_region(global.inputs, iPRESSED, 0, iRELEASED, iGRIDHEIGHT-1, false);
-//set each button
-global.inputs[# iBUTTONID, iLEFT] = ord("A");
-global.inputs[# iBUTTONID, iRIGHT] = ord("D");
-global.inputs[# iBUTTONID, iUP] = ord("W");
-global.inputs[# iBUTTONID, iDOWN] = ord("S");
-global.inputs[# iBUTTONID, iJUMP] = vk_space;
+/*analogue_deadzone = 0.75; //how far a stick has to be pushed to register
+analogue_sticks = ds_list_create(); //track all analogue sticks
+analogue_sticks_previous = ds_list_create(); //for comparing to last frame
 
-global.inputs[# iDEVICE, iATTACK] = iMOUSE;
-global.inputs[# iBUTTONID, iATTACK] = mb_left;
+//initialize list
+for(var i = 0; i <= 11; i++)
+	{ds_list_add(analogue_sticks, [0,0,0,0]);};
 
-global.inputs[# iBUTTONID, iCONFIRM] = vk_space;
-global.inputs[# iBUTTONID, iBACK] = vk_escape;
-global.inputs[# iBUTTONID, iMENU] = vk_escape;
+function fnInputGetStickValues()
+	{
+	for(var i = 0; i < gamepad_get_device_count(); i++)
+		{
+		if(gamepad_is_connected(i))
+			{
+			var _LH = gamepad_axis_value(i, gp_axislh);
+			var _LV = gamepad_axis_value(i, gp_axislv);
+			var _RH = gamepad_axis_value(i, gp_axisrh);
+			var _RV = gamepad_axis_value(i, gp_axisrv);
+			//create an array of the left and right stick values
+			analogue_sticks[| i] = [_LH, _LV, _RH, _RV];
+			};
+		};
+	};*/
 
 #endregion
+
+fnInitializeInputs();

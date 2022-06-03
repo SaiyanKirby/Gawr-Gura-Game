@@ -1,10 +1,10 @@
-if(keyboard_check_pressed(vk_escape))
+if(global.inputs[# iPRESSED, iBACK] || global.inputs[# iPRESSED, iMENU])
 	{
-	var _paused = instance_find(objGUIPauseWindow,0);
-	if(_paused == noone)
-		{instance_create_depth(0, 0, -1000, objGUIPauseWindow);};
-	else
-		{instance_destroy(_paused);};
+	if(ds_list_empty(global.guiStack) && instance_find(objGUIPauseWindow,0) == noone)
+		{
+		fnClearInputs();
+		instance_create_depth(0, 0, -1000, objGUIPauseWindow);
+		};
 	};
 
 global.guiActive = !ds_list_empty(global.guiStack);

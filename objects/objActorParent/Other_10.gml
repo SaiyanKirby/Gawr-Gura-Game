@@ -3,7 +3,7 @@
 function fnActorCollide(_x = 0, _y = 0)
 	{
 	//extend for tile-based collision at some point?
-	var _collide = place_meeting(_x, _y, objSolidTile) && !place_meeting(x, y, objSolidTile);
+	var _collide = place_meeting(_x, _y, objSolidTile);// && !place_meeting(x, y, objSolidTile);
 	//dont consider collisions if you're already inside an object ^
 	if(_y <= 0 || _y >= room_height)
 		{_collide = true;};
@@ -98,6 +98,12 @@ function fnSwitchGravity()
 	with(objActorParent)
 		{
 		if(affected_by_gravity)
-			{image_yscale *= -1;}
+			{
+			if(image_yscale > 0)
+				{y = bbox_top;};
+			else
+				{y += bbox_bottom - bbox_top;};
+			image_yscale *= -1;
+			}
 		}
 	}
