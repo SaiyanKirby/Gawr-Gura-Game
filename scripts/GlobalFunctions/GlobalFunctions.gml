@@ -43,7 +43,7 @@ function fnInitializeInputs()
 
 	global.inputs[# iBUTTONID, iCONFIRM] = vk_space;
 	global.inputs[# iBUTTONID, iBACK] = vk_escape;
-	global.inputs[# iBUTTONID, iMENU] = vk_escape;
+	global.inputs[# iBUTTONID, iPAUSE] = vk_escape;
 	};
 
 function fnInputGetStickValues()

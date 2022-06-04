@@ -1,7 +1,7 @@
 event_inherited();
 
 x = 288;
-y = 64;
+y = 32;
 
 timer = 0; //for animating the cursor
 

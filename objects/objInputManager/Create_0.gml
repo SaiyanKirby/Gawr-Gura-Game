@@ -11,7 +11,7 @@
 #macro iATTACK 5
 #macro iCONFIRM 6
 #macro iBACK 7
-#macro iMENU 8
+#macro iPAUSE 8
 
 #macro iDEVICE 0
 #macro iBUTTONID 1

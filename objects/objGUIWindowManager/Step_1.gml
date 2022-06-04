@@ -1,4 +1,4 @@
-if(global.inputs[# iPRESSED, iBACK] || global.inputs[# iPRESSED, iMENU])
+if(global.inputs[# iPRESSED, iBACK] || global.inputs[# iPRESSED, iPAUSE])
 	{
 	if(ds_list_empty(global.guiStack) && instance_find(objGUIPauseWindow,0) == noone)
 		{
