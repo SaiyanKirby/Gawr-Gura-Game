@@ -36,8 +36,8 @@
   ],
   "overriddenProperties": [],
   "parent": {
-    "name": "Level Visuals",
-    "path": "folders/Level Visuals.yy",
+    "name": "Level Stucture",
+    "path": "folders/Rooms/Level Stucture.yy",
   },
   "resourceVersion": "1.0",
   "name": "objParallaxBackground",

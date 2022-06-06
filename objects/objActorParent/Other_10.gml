@@ -3,7 +3,7 @@
 function fnActorCollide(_x = 0, _y = 0)
 	{
 	//extend for tile-based collision at some point?
-	var _collide = place_meeting(_x, _y, objSolidTile);// && !place_meeting(x, y, objSolidTile);
+	var _collide = place_meeting(_x, _y, objSolidTile) && !place_meeting(x, y, objSolidTile);
 	//dont consider collisions if you're already inside an object ^
 	if(_y <= 0 || _y >= room_height)
 		{_collide = true;};
@@ -78,8 +78,8 @@ function fnActorMove()
 	airborne = fnActorIsAirborne();
 	
 	//clamp final position
-	x = clamp(x, 0, room_width);
-	y = clamp(y, 0, room_height);
+	x = clamp(round(x), 0, room_width);
+	y = clamp(round(y), 0, room_height);
 	};
 
 function fnApplyGravity()

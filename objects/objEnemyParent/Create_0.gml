@@ -5,7 +5,6 @@ function fnHurtEnemy(_damage = 1, _knockback_x = 1, _knockback_y = -1, _knockbac
 	if(!hitbox_active)
 		{return false;};
 
-	var v_center = bbox_bottom - ((bbox_bottom - bbox_top)/2);
 	var damage_number = instance_create_depth(x, bbox_top, depth-10, objDamageNumber)
 	damage_number.damage = _damage;
 	damage_number.x_speed = sign(_knockback_x) / 2;
@@ -24,6 +23,7 @@ function fnHurtEnemy(_damage = 1, _knockback_x = 1, _knockback_y = -1, _knockbac
 		{
 		hurtbox_active = false;
 		hitbox_active = false;
+		var v_center = bbox_bottom - ((bbox_bottom - bbox_top)/2);
 		instance_create_depth(x, v_center, depth-10, objEnemyDeathEffect);
 		audio_play_sound(sndEnemyDeath, 0, 0);
 		alive = false;

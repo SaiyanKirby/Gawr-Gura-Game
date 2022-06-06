@@ -43,7 +43,10 @@ Levels:
 		- Background(s)
 		- Tileset(s)
 		- BGM
-		- (What mechanic?)
+		- Mechanic: Corpse flower jump pads
+			- Jump on it to bounce upwards
+			- Gives off a puff of poison gas when you bounce off it
+			- If you bounce off it with your trident's downstab you avoid the gas
 		- Boss Fight
 		- Cutscene
 

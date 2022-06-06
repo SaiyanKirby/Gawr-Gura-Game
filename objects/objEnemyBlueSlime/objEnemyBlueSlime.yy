@@ -31,8 +31,8 @@
     {"propertyId":{"name":"max_hp","path":"objects/objActorParent/objActorParent.yy",},"objectId":{"name":"objActorParent","path":"objects/objActorParent/objActorParent.yy",},"value":"5","resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMOverriddenProperty",},
   ],
   "parent": {
-    "name": "Enemies",
-    "path": "folders/Actors/Enemies.yy",
+    "name": "Slimes",
+    "path": "folders/Actors/Enemies/Slimes.yy",
   },
   "resourceVersion": "1.0",
   "name": "objEnemyBlueSlime",

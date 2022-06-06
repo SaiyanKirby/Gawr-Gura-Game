@@ -11,7 +11,7 @@ else
 	y = 0;
 	};
 
-camera = camera_create_view(x,y, global.resolution_width, global.resolution_height);
+camera = camera_create_view(x,y, global.camera_width, global.camera_height);
 view_set_camera(0, camera);
 
-camera_set_view_pos(camera, x - floor(global.resolution_width/2), y - floor(global.resolution_height/2))
+camera_set_view_pos(camera, x - floor(global.camera_width/2), y - floor(global.camera_height/2));

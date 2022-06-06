@@ -73,8 +73,8 @@
   ],
   "nineSlice": null,
   "parent": {
-    "name": "Enemies",
-    "path": "folders/Actors/Enemies.yy",
+    "name": "Slimes",
+    "path": "folders/Actors/Enemies/Slimes.yy",
   },
   "resourceVersion": "1.0",
   "name": "sprEnemyGreenSlime",

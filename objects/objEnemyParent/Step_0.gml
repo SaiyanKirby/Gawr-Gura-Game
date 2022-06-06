@@ -27,5 +27,8 @@ if(!moving)
 		{x_speed -= global.air_friction_constant * sign(x_speed);};
 	};
 
-fnApplyGravity();
-fnActorMove();
+if(alive)
+	{
+	fnApplyGravity();
+	fnActorMove();
+	};

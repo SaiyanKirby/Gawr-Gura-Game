@@ -1,3 +1,7 @@
+//only run if this is the active window
+if(global.guiStack[| ds_list_size(global.guiStack)-1] != self)
+	{exit;};
+
 var xx = x - (width/2);
 var yy = y - (height * 3);
 

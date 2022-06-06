@@ -57,3 +57,8 @@
 - Added support for binding analogue stick inputs to actions
 - Removed unbinding keys in the button remap screen
 - Added some logic to prevent you from binding confirm and back/pause to the same key, which breaks menus
+- Extended the test level
+- Added a skeleton enemy
+	- Shuffles horizontally forward towards you when you're nearby
+	- Jumps when moving up against a wall
+	- Goes back to idle state when you get far enough away
