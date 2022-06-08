@@ -62,3 +62,12 @@
 	- Shuffles horizontally forward towards you when you're nearby
 	- Jumps when moving up against a wall
 	- Goes back to idle state when you get far enough away
+
+[Build_0008]
+- Small adjustments to the skeleton's AI
+- Adjustments to trident forward attack
+	- The timings are slightly different
+	- There is now an input buffer for the 3-hit combo
+- Added 0.25s of "coyote time" to jumps - a small buffer after leaving an edge where it doesn't consume your first jump
+- Added BGM (The actual track itself is a temporary placeholder found on opengameart.org)
+- Added a parallax forest background

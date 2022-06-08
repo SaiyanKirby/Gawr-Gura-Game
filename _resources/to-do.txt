@@ -1,17 +1,24 @@
+- Movement/combat mechanics
+	- New attacks
+		- Dash
+		- Gun attack
+		- ???
+	- Fix collision code for fallthrough tiles
+	- Hitstop and screenshake on hits
+
 - Pause Menu
 	- Add "Skip Cutscene" button (when a cutscene is active)
 	- Add "Return to level select" button
+	- Both should have confirmation windows
 
 - Options Menu
 	- Change window size / fullscreen
-	- Change volume (separate values for BGM, SFX
-	- Fix button remap logic:
-		- remove unbinding buttons
-		- when binding a button to multiple actions, swap both buttons
-		- allow binding duplicate buttons to confirm and back, but not each other
+		- Add support for arbitrary resolutions
+	- Change volume (separate values for BGM, SFX)
 
-- Controller work
-	- Create scripts to check pressed/released/held for analogue sticks
+- Button Remap Menu
+	- Since there will probably end up being more buttons than can fit on the screen at a time, add some way of scrolling through the buttons
+	- Add sprites for all the keys and buttons rather than writing it in text
 
 - Cutscene System
 	- Control arbitrary objects
@@ -32,11 +39,6 @@
 - Level Select Screen
 	- Pick any of Fauna/Mumei/Sana/Kronii levels, then when all 4 are beat, unlock Bae's level
 	- Display collected golden shrimps
-
-- New attacks
-	- Dash
-	- Gun
-	- ???
 
 Levels:
 	- Fauna
@@ -62,7 +64,7 @@ Levels:
 		- Background(s)
 		- Tileset(s)
 		- BGM
-		- Gravity mechanic
+		- Mechanic: Reversed gravity
 		- Boss Fight
 		- Cutscene
 
@@ -70,7 +72,7 @@ Levels:
 		- Background(s)
 		- Tileset(s)
 		- BGM
-		- Time slow/freeze mechanic
+		- Mechanic: Slow down time
 		- Boss Fight
 		- Cutscene
 

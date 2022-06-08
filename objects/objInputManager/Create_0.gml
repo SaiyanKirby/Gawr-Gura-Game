@@ -36,6 +36,7 @@
 #endregion macros
 
 global.inputs = ds_grid_create(iGRIDWIDTH, iGRIDHEIGHT);
+global.input_buffer = ds_list_create();
 fnInitializeInputs();
 /*
 each row is one button

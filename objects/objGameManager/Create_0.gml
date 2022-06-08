@@ -2,7 +2,7 @@
 
 #region #define global variables
 
-global.build_number = "0007"
+global.build_number = "0008"
 
 global.fontDamageNumber = font_add_sprite(sprFontDamageNumber, ord("!"), false, 1);
 global.fontMain = fontFredokaOne20p;
@@ -17,5 +17,6 @@ global.font_height = string_height("O");
 instance_create_depth(0, 0, -1000, objDebugManager);
 instance_create_depth(0, 0, -1000, objInputManager);
 instance_create_depth(0, 0, -1000, objResolutionManager);
+instance_create_depth(0, 0, -1000, objAudioManager);
 instance_create_depth(0, 0, -1000, objCameraManager);
 instance_create_depth(0, 0, -1000, objGUIWindowManager);

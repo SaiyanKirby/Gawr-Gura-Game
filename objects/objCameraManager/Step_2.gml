@@ -22,16 +22,20 @@ else
 
 //clamp to within bounds of the room size
 if(global.camera_width < room_width)
-	{camera_x = clamp(x,(global.camera_width/2),(room_width-(global.camera_width/2)));};
+	{global.camera_x = clamp(x - (global.camera_width/2), 0, room_width - global.camera_width);};
 else
-	{camera_x = room_width/2;};
+	{global.camera_x = (room_width/2) - (global.camera_width/2);};
 if(global.camera_height < room_height)
-	{camera_y = clamp(y,(global.camera_height/2),(room_height-(global.camera_height/2)));};
+	{global.camera_y = clamp(y - (global.camera_height/2), 0, room_height - global.camera_height);};
 else
-	{camera_y = room_height/2;};
+	{global.camera_y = (room_height/2) - (global.camera_height/2);};
 
 //set hud position
-global.HUD_x = camera_x-(global.camera_width/2);
-global.HUD_y = camera_y-(global.camera_height/2);
+global.HUD_x = global.camera_x;
+global.HUD_y = global.camera_y;
 //actually set the camera position
-camera_set_view_pos(camera, camera_x - floor(global.camera_width/2), camera_y - floor(global.camera_height/2))
+camera_set_view_size(camera, global.camera_width, global.camera_height);
+camera_set_view_pos(camera, global.camera_x, global.camera_y);
+
+with(objParallaxBackground)
+	{fnMoveParallaxLayer()};

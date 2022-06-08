@@ -1,5 +1,15 @@
 event_inherited();
 
+/*
+Hitbox vs Hurtbox:
+
+The player takes damage on contacting an enemy's HURTbox
+The enemy takes damage when the player's attacks connect with its HITbox
+
+The HITbox gets HIT
+The HURTbox HURTS
+*/
+
 function fnHurtEnemy(_damage = 1, _knockback_x = 1, _knockback_y = -1, _knockback_time, _hurtbox_disable_time = 30)
 	{
 	if(!hitbox_active)
@@ -18,9 +28,10 @@ function fnHurtEnemy(_damage = 1, _knockback_x = 1, _knockback_y = -1, _knockbac
 		hurtbox_active = false;
 		alarm[1] = _hurtbox_disable_time;
 		return true;
-		}
+		};
 	else
 		{
+		//death code
 		hurtbox_active = false;
 		hitbox_active = false;
 		var v_center = bbox_bottom - ((bbox_bottom - bbox_top)/2);

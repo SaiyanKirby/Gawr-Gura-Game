@@ -1,7 +1,7 @@
 {
   "spriteId": {
-    "name": "spr_Grass_Tileset",
-    "path": "sprites/spr_Grass_Tileset/spr_Grass_Tileset.yy",
+    "name": "sprTilesetGrass",
+    "path": "sprites/sprTilesetGrass/sprTilesetGrass.yy",
   },
   "tileWidth": 8,
   "tileHeight": 8,
@@ -2936,10 +2936,10 @@
   },
   "parent": {
     "name": "Tile Sets",
-    "path": "folders/Rooms/Level Stucture/Tile Sets.yy",
+    "path": "folders/Rooms/Fauna Level/Tile Sets.yy",
   },
   "resourceVersion": "1.0",
-  "name": "tileset_Grass",
+  "name": "tilesetGrass",
   "tags": [],
   "resourceType": "GMTileSet",
 }

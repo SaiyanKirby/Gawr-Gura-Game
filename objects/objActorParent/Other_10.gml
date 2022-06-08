@@ -104,6 +104,13 @@ function fnSwitchGravity()
 			else
 				{y += bbox_bottom - bbox_top;};
 			image_yscale *= -1;
-			}
-		}
-	}
+			};
+		};
+	};
+
+function fnActorIsOffScreen()
+	{
+	if(bbox_right < global.camera_x - 8 || bbox_left > global.camera_x + global.camera_width + 8){return true;};
+	if(bbox_bottom < global.camera_y - 8 || bbox_top > global.camera_y + global.camera_height + 8){return true;};
+	return false;
+	};

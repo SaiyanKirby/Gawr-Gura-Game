@@ -9,8 +9,8 @@ follow = noone;
 x_to = x;
 y_to = y;
 
-camera_x = x;
-camera_y = y;
+global.camera_x = x;
+global.camera_y = y;
 
 camera = camera_create_view(0,0, global.camera_width, global.camera_height);
 view_set_camera(0, camera);

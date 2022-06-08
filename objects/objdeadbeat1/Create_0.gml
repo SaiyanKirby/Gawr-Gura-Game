@@ -4,6 +4,7 @@ image_speed = 0;
 
 dir = 1;
 movement_speed = 0.25;
+last_jump_x = -1;//so he doesn't just jump forever
 
 state = 0;
 alert_timer = 0;
@@ -13,11 +14,11 @@ function fnDeadbeat1AI()
 	{
 	image_xscale = dir;
 	var _player = instance_find(objGura,0);
-	if(!instance_exists(_player))
+	if(!instance_exists(_player) || fnActorIsOffScreen())
 		{fnDeadbeat1SwitchState(0);};
 	else
 		{
-		var _distance = point_distance(x, y, _player.x, _player.y);
+		var _distance = abs(x - _player.x);
 		switch(state)
 			{
 			case 0://idle
@@ -34,24 +35,16 @@ function fnDeadbeat1AI()
 				{
 				moving = false;
 				dir = (x >= _player.x) ? -1 : 1;
-				if(x < global.HUD_x-16 || x > global.HUD_x+(global.HUD_width/global.scale)+16)
+				if(_distance > alert_distance * 2 || _distance <= 4)
 					{
 					fnDeadbeat1SwitchState(0);
 					break;
 					};
 				else
 					{
-					if(_distance > alert_distance * 2 || _distance <= 4)
-						{
-						fnDeadbeat1SwitchState(0);
-						break;
-						};
-					else
-						{
-						alert_timer++;
-						if(alert_timer >= 30)
-							{fnDeadbeat1SwitchState(2);};
-						};
+					alert_timer++;
+					if(alert_timer >= 30)
+						{fnDeadbeat1SwitchState(2);};
 					};
 				break;
 				};
@@ -59,35 +52,27 @@ function fnDeadbeat1AI()
 				{
 				moving = true;
 				dir = (x >= _player.x) ? -1 : 1;
-				if(x < global.HUD_x-16 || x > global.HUD_x+(global.HUD_width/global.scale)+16)
+				if(_distance > alert_distance * 1.5 || _distance <= 4)
 					{
 					fnDeadbeat1SwitchState(0);
 					break;
 					};
 				else
 					{
-					if(_distance > alert_distance * 1.5 || _distance <= 4)
+					if(knockback_time <= 0)
 						{
-						fnDeadbeat1SwitchState(0);
-						break;
-						};
-					else
-						{
-						if(knockback_time <= 0)
+						x_speed = movement_speed * dir;
+						if(last_jump_x != x && y_speed == 0 && !airborne)
 							{
-							x_speed = movement_speed * dir;
-							if(y_speed == 0 && !airborne)
+							if(fnActorCollide(x + dir, y))
 								{
-								if(fnActorCollide(x + dir, y))
-									{
-									//jump if up against a wall
-									y_speed -= 2.5;
-									audio_play_sound(sndGuraJump,0,false);
-									var _jumpeffect = instance_create_depth(x, y, depth+1, objGuraJumpParticle);
-									_jumpeffect.sprite_index = sprGuraJumpParticleGround;
-									_jumpeffect.image_index = 0;
-									airborne = true;
-									};
+								//jump if up against a wall
+								y_speed -= 2.5;
+								last_jump_x = x;
+								audio_play_sound(sndGuraJump,0,false);
+								var _jumpeffect = instance_create_depth(x, y, depth+1, objGuraJumpParticle);
+								_jumpeffect.sprite_index = sprGuraJumpParticleGround;
+								_jumpeffect.image_index = 0;
 								};
 							};
 						};
@@ -106,6 +91,7 @@ function fnDeadbeat1SwitchState(_state)
 		{
 		case 0://idle
 			{
+			moving = false;
 			sprite_index = sprDeadbeat1;
 			image_index = 0;
 			image_speed = 0;
@@ -113,6 +99,7 @@ function fnDeadbeat1SwitchState(_state)
 			};
 		case 1://alert
 			{
+			moving = false;
 			sprite_index = sprDeadbeat1;
 			image_index = 1;
 			image_speed = 0;
@@ -121,9 +108,11 @@ function fnDeadbeat1SwitchState(_state)
 			};
 		case 2://moving
 			{
+			moving = true;
 			sprite_index = sprDeadbeat1Walk;
 			image_index = 0;
 			image_speed = 1;
+			last_jump_x = -1;
 			break;
 			};
 		};

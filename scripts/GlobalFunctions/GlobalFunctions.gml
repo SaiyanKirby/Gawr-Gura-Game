@@ -15,18 +15,17 @@ function fnSortGUIStack()
 function fnClearInputs()
 	{
 	io_clear();
-	/*
-	ds_list_clear(global.analogue_sticks);
-	ds_list_clear(global.analogue_sticks_previous);
-	for(var i = 0; i < 4; i++)
-		{ds_list_add(global.analogue_sticks, [0,0,0,0]);};
-	ds_list_copy(global.analogue_sticks_previous, global.analogue_sticks);
-	*/
+	//set input buffer to all 0s
+	ds_list_clear(global.input_buffer);
+	ds_list_set(global.input_buffer, iPAUSE, false);
+	//reset all keys to false
 	ds_grid_set_region(global.inputs, iPRESSED, 0, iRELEASED, iGRIDHEIGHT-1, false);
 	};
 
 function fnInitializeInputs()
 	{
+	//set input buffer to all 0s
+	ds_list_set(global.input_buffer, iPAUSE, false);
 	//set all inputs to keyboard
 	ds_grid_set_region(global.inputs, iDEVICE, 0, iDEVICE, iGRIDHEIGHT-1, iKEYBOARD);
 	//set all pressed/held/released to false

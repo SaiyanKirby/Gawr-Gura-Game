@@ -1,0 +1,2 @@
+layer_background_destroy(background);
+layer_destroy(background_layer);

@@ -21,6 +21,8 @@ function fnGuraStateChange(_newstate)
 	{
 	animation_timer = 0;
 	image_xscale = dir;
+	ds_list_clear(global.input_buffer);
+	ds_list_set(global.input_buffer, iPAUSE, false);
 	switch(_newstate)
 		{
 		default:
@@ -30,6 +32,7 @@ function fnGuraStateChange(_newstate)
 			state = gura_states.idle;
 			jumps = max_jumps;
 			jump_hold_time = 0;
+			airborne_time = -1;
 			break;
 			};
 		case gura_states.running:
@@ -41,28 +44,32 @@ function fnGuraStateChange(_newstate)
 			state = gura_states.running;
 			jumps = max_jumps;
 			jump_hold_time = 0;
+			airborne_time = -1;
 			break;
 			};
 		case gura_states.airborne:
 			{
 			image_index = 1;
-			state = gura_states.airborne
+			state = gura_states.airborne;
 			break;
 			};
 		case gura_states.attack_neutral:
 			{
 			jump_hold_time = 0;
 			state = gura_states.attack_neutral;
+			airborne_time = -1;
 			break;
 			};
 		case gura_states.attack_down:
 			{
 			state = gura_states.attack_down;
+			airborne_time = -1;
 			break;
 			};
 		case gura_states.attack_up:
 			{
 			state = gura_states.attack_up;
+			airborne_time = -1;
 			break;
 			};
 		};
@@ -81,7 +88,7 @@ function fnGuraStateIdle()
 	//if airborn, switch to airborne state
 	if(airborne)
 		{
-		jumps--;
+		airborne_time = 0;
 		fnGuraStateChange(gura_states.airborne);
 		};
 	
@@ -130,7 +137,7 @@ function fnGuraStateRunning()
 	//if airborn, switch to airborne
 	if(airborne)
 		{
-		jumps--;
+		airborne_time = 0;
 		fnGuraStateChange(gura_states.airborne);
 		};
 	
@@ -159,6 +166,17 @@ function fnGuraStateAirborne()
 		x_speed = run_speed;
 		};
 	image_xscale = dir;
+	
+	//for "coyote time" - a small jump buffer
+	if(airborne_time != -1)
+		{
+		airborne_time++;
+		if(airborne_time == 15)//0.25 second buffer
+			{
+			jumps--;
+			airborne_time = -1;
+			};
+		};
 	
 	//if not holding left/right, stop moving
 	if(!(global.inputs[# iHELD, iLEFT] ^ global.inputs[# iHELD, iRIGHT]))
@@ -204,7 +222,7 @@ function fnGuraStateAttackNeutral()
 	{
 	animation_timer++;
 	
-	var _ready_time = 7;//time to hold out the trident
+	var _ready_time = 10;//time to hold out the trident
 	var _end_lag = 10;//how long to keep the trident out
 	
 	if(attack_combo == 3)
@@ -215,8 +233,6 @@ function fnGuraStateAttackNeutral()
 	
 	if(airborne)
 		{
-		_end_lag *= 2; //to prevent a flying exploit
-		
 		fnApplyGravity();
 		
 		//only allow movement while in the air
@@ -238,18 +254,8 @@ function fnGuraStateAttackNeutral()
 	else
 		{moving = false;};
 	
-	if(animation_timer > _ready_time)
-		{
-		image_index = 3;
-		if(attack_combo < 3)
-			{
-			//allow successive attacks
-			if(global.inputs[# iPRESSED, iATTACK])
-				{fnGuraActionAttackNeutral()};
-			};
-		};
-	else
-		{image_index = 2;};
+	if(global.inputs[# iPRESSED, iATTACK])
+		{global.input_buffer[| iATTACK] = true;};
 	
 	if(animation_timer == _ready_time)//thrust trident
 		{
@@ -266,8 +272,26 @@ function fnGuraStateAttackNeutral()
 		audio_play_sound(sndGuraAttack,0,false);
 		trident_object.image_index = 1;
 		};
-	if(animation_timer >= _ready_time + _end_lag || animation_timer == -1)//put it away
-		{fnGuraActionCleanUpAttacks();};
+	else if(animation_timer >= _ready_time)
+		{
+		image_index = 3;
+		if(global.input_buffer[| iATTACK] = true && attack_combo < 3)//for 3-hit combo
+			{
+			if(animation_timer >= _ready_time + 5)
+				{
+				global.input_buffer[| iATTACK] = false;
+				fnGuraActionAttackNeutral();
+				};
+			};
+		};
+	else
+		{image_index = 2;};
+	
+	if(animation_timer >= _ready_time + _end_lag + 5 || animation_timer == -1)//put it away
+		{
+		global.input_buffer[| iATTACK] = false;
+		fnGuraActionCleanUpAttacks();
+		};
 	};
 
 function fnGuraStateAttackDown()
@@ -347,6 +371,7 @@ function fnGuraActionJump()
 	{
 	jumps--;
 	jump_hold_time = jump_hold_time_max;
+	airborne_time = -1;
 	y_speed = jump_height * global.gravity_dir;
 	var _jumpeffect = instance_create_depth(x, y, depth+1, objGuraJumpParticle);
 	if(!airborne)
@@ -430,7 +455,7 @@ function fnEnemyContactDamage()
 		for(var i = 0; i < ds_list_size(enemies_contacting); i++)
 			{
 			var _enemy = enemies_contacting[|i];
-			if(!hit && _enemy.hurtbox_active)
+			if(!hit && _enemy.hitbox_active)
 				{
 				hit = true;
 				var _dir = sign(x-_enemy.x);//get knocked away from the enemy
@@ -441,7 +466,7 @@ function fnEnemyContactDamage()
 				damage_number.x_speed = _dir / 2;
 				
 				fnGuraActionCleanUpAttacks();
-				iframes = 30;
+				iframes = 40;
 				knockback_time = 20;
 				animation_timer = 0;
 				alarm[0] = hp_regen_time;//reset hp regen delay
@@ -452,9 +477,10 @@ function fnEnemyContactDamage()
 					dir = -_dir;
 					image_xscale = dir;
 					};
+				break;
 				};
 			};
 		if(hit)
-			{audio_play_sound(sndHurt, 0, false);}
+			{audio_play_sound(sndHurt, 0, false);};
 		};
 	};
