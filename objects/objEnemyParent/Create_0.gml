@@ -30,21 +30,24 @@ function fnHurtEnemy(_damage = 1, _knockback_x = 1, _knockback_y = -1, _knockbac
 		return true;
 		};
 	else
-		{
-		//death code
-		hurtbox_active = false;
-		hitbox_active = false;
-		var v_center = bbox_bottom - ((bbox_bottom - bbox_top)/2);
-		instance_create_depth(x, v_center, depth-10, objEnemyDeathEffect);
-		audio_play_sound(sndEnemyDeath, 0, 0);
-		alive = false;
-		image_alpha = 0;
-		alarm[1] = -1;
-		alarm[0] = respawn_time;
-		x = spawn_x;
-		y = spawn_y;
-		return true;
-		};
+		{fnEnemyDie();};
+	};
+
+function fnEnemyDie()
+	{
+	//death code
+	hurtbox_active = false;
+	hitbox_active = false;
+	var v_center = bbox_bottom - ((bbox_bottom - bbox_top)/2);
+	instance_create_depth(x, v_center, depth-10, objEnemyDeathEffect);
+	audio_play_sound(sndEnemyDeath, 0, 0);
+	alive = false;
+	image_alpha = 0;
+	alarm[1] = -1;
+	alarm[0] = respawn_time;
+	x = spawn_x;
+	y = spawn_y;
+	return true;
 	};
 
 _healthbar = instance_create_depth(x, y, depth-10, objEnemyHealthBar);

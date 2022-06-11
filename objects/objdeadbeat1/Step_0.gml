@@ -10,11 +10,23 @@ if(global.guiActive)
 	exit;
 	};
 
-if(iframes > 0)
-	{iframes--;};
-
-if(alive)
+if(state == -1)
+	{fnDeadbeat1AI();};
+else if(state >= 0)
 	{
+	if(iframes > 0)
+		{iframes--;}
+		
+	if(alarm[1] > 0)//flash when hitbox isnt active
+		{
+		if(alarm[1] % 4 > 1)
+			{image_alpha = 1};
+		else
+			{image_alpha = 0;};
+		}
+	else
+		{image_alpha = 1;};
+		
 	if(knockback_time > 0)
 		{
 		moving = false;
@@ -36,5 +48,3 @@ if(alive)
 
 	airborne = fnActorIsAirborne();
 	};
-else
-	{fnDeadbeat1SwitchState(0);};

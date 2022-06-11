@@ -2,7 +2,7 @@
 
 #region #define global variables
 
-global.build_number = "0008"
+global.build_number = "0009"
 
 global.fontDamageNumber = font_add_sprite(sprFontDamageNumber, ord("!"), false, 1);
 global.fontMain = fontFredokaOne20p;

@@ -71,3 +71,6 @@
 - Added 0.25s of "coyote time" to jumps - a small buffer after leaving an edge where it doesn't consume your first jump
 - Added BGM (The actual track itself is a temporary placeholder found on opengameart.org)
 - Added a parallax forest background
+
+[Build_0009]
+- Added gravestones, where the skeletons spawn from. They rise out of the graves.

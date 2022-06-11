@@ -27,12 +27,17 @@
   "eventList": [
     {"isDnD":false,"eventNum":0,"eventType":0,"collisionObjectId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
     {"isDnD":false,"eventNum":0,"eventType":3,"collisionObjectId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
+    {"isDnD":false,"eventNum":0,"eventType":8,"collisionObjectId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
+    {"isDnD":false,"eventNum":0,"eventType":2,"collisionObjectId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
   ],
   "properties": [],
   "overriddenProperties": [
     {"propertyId":{"name":"hp","path":"objects/objActorParent/objActorParent.yy",},"objectId":{"name":"objActorParent","path":"objects/objActorParent/objActorParent.yy",},"value":"8","resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMOverriddenProperty",},
     {"propertyId":{"name":"max_hp","path":"objects/objActorParent/objActorParent.yy",},"objectId":{"name":"objActorParent","path":"objects/objActorParent/objActorParent.yy",},"value":"8","resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMOverriddenProperty",},
     {"propertyId":{"name":"damage","path":"objects/objEnemyParent/objEnemyParent.yy",},"objectId":{"name":"objEnemyParent","path":"objects/objEnemyParent/objEnemyParent.yy",},"value":"2","resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMOverriddenProperty",},
+    {"propertyId":{"name":"respawn_time","path":"objects/objEnemyParent/objEnemyParent.yy",},"objectId":{"name":"objEnemyParent","path":"objects/objEnemyParent/objEnemyParent.yy",},"value":"180","resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMOverriddenProperty",},
+    {"propertyId":{"name":"hitbox_active","path":"objects/objEnemyParent/objEnemyParent.yy",},"objectId":{"name":"objEnemyParent","path":"objects/objEnemyParent/objEnemyParent.yy",},"value":"False","resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMOverriddenProperty",},
+    {"propertyId":{"name":"hurtbox_active","path":"objects/objEnemyParent/objEnemyParent.yy",},"objectId":{"name":"objEnemyParent","path":"objects/objEnemyParent/objEnemyParent.yy",},"value":"False","resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMOverriddenProperty",},
   ],
   "parent": {
     "name": "Fauna Level Enemies",
