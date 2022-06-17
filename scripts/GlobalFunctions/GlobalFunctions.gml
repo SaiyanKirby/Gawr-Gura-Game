@@ -1,5 +1,21 @@
 exit;
 
+function fnSwitchGravity()
+	{
+	global.gravity_dir *= -1;
+	with(objActorParent)
+		{
+		if(affected_by_gravity)
+			{
+			if(image_yscale > 0)
+				{y = bbox_top;};
+			else
+				{y += bbox_bottom - bbox_top;};
+			image_yscale *= -1;
+			};
+		};
+	};
+
 function fnSortGUIStack()
 	{
 	for(var i = 0; i < ds_list_size(global.guiStack); i++)

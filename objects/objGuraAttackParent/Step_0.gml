@@ -15,7 +15,7 @@ if(!instance_exists(_parent))
 	exit;
 	};
 
-if(hitbox_active)
+if(hurtbox_active)
 	{
 	//create a temporary list of every collision on this frame
 	ds_list_clear(enemies_hit_this_frame)

@@ -73,4 +73,6 @@
 - Added a parallax forest background
 
 [Build_0009]
-- Added gravestones, where the skeletons spawn from. They rise out of the graves.
+- Added gravestones for the skeletons. They rise out of the graves when they (re)spawn.
+- Added a second skeleton enemy, based off of the Q music video.
+	- He doesn't move, but swings a baseball bat at you when you're close enough

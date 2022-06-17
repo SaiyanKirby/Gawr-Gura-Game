@@ -46,6 +46,4 @@ for(var b = 0; b < iGRIDHEIGHT; b++)
 			break;
 			};
 		};
-	/*if(global.inputs[# iPRESSED, b] == true || global.inputs[# iRELEASED, b] == true)
-		{global.input_buffer[| b] = false;};*/
 	};

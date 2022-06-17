@@ -22,7 +22,7 @@ alert_timer = -1;
 alert_distance = 80;
 rise_grave_time = 45;
 
-function fnDeadbeat1AI()
+fnDeadbeat1AI = function()
 	{
 	image_xscale = dir;
 	var _player = instance_find(objGura,0);
@@ -124,7 +124,7 @@ function fnDeadbeat1AI()
 		};
 	};
 
-function fnDeadbeat1SwitchState(_state)
+fnDeadbeat1SwitchState = function(_state)
 	{
 	state = _state;
 	switch(_state)
@@ -189,7 +189,7 @@ function fnDeadbeat1SwitchState(_state)
 	image_xscale = dir;
 	};
 
-function fnEnemyDie()
+fnEnemyDie = function()
 	{
 	//override the death code
 	fnDeadbeat1SwitchState(-2);

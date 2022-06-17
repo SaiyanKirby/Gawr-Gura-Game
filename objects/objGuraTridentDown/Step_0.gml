@@ -15,7 +15,7 @@ if(!instance_exists(_parent))
 	exit;
 	};
 
-if(hitbox_active)
+if(hurtbox_active)
 	{
 	var _enemy = noone;
 	for(var i = 0; i < ds_list_size(enemies_hit); i++)

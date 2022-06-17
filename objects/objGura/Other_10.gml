@@ -3,7 +3,7 @@ event_inherited();
 
 #region state functions
 
-function fnGetStateName()
+fnGuraGetStateName = function()
 	{
 	switch(state)
 		{
@@ -17,7 +17,7 @@ function fnGetStateName()
 		};
 	};
 
-function fnGuraStateChange(_newstate)
+fnGuraStateChange = function(_newstate)
 	{
 	animation_timer = 0;
 	image_xscale = dir;
@@ -75,7 +75,7 @@ function fnGuraStateChange(_newstate)
 		};
 	};
 
-function fnGuraStateIdle()
+fnGuraStateIdle = function()
 	{
 	image_index = 0;
 	moving = false;
@@ -99,7 +99,7 @@ function fnGuraStateIdle()
 		{fnGuraActionAttackNeutral();};
 	};
 
-function fnGuraStateRunning()
+fnGuraStateRunning = function()
 	{
 	//if holding left, move left
 	if(global.inputs[# iHELD, iLEFT] && !global.inputs[# iHELD, iRIGHT])
@@ -148,7 +148,7 @@ function fnGuraStateRunning()
 		{fnGuraActionAttackNeutral();};
 	};
 
-function fnGuraStateAirborne()
+fnGuraStateAirborne = function()
 	{
 	image_index = 1;
 	//if holding left, move left
@@ -218,7 +218,7 @@ function fnGuraStateAirborne()
 		{fnGuraActionAttackDown();};
 	};
 
-function fnGuraStateAttackNeutral()
+fnGuraStateAttackNeutral = function()
 	{
 	animation_timer++;
 	
@@ -294,7 +294,7 @@ function fnGuraStateAttackNeutral()
 		};
 	};
 
-function fnGuraStateAttackDown()
+fnGuraStateAttackDown = function()
 	{
 	image_index = 4;
 	//if holding left, move left
@@ -367,7 +367,7 @@ function fnGuraStateAttackDown()
 
 #region //action functions
 
-function fnGuraActionJump()
+fnGuraActionJump = function()
 	{
 	jumps--;
 	jump_hold_time = jump_hold_time_max;
@@ -383,7 +383,7 @@ function fnGuraActionJump()
 	fnGuraStateChange(gura_states.airborne);
 	};
 
-function fnGuraActionAttackNeutral()
+fnGuraActionAttackNeutral = function()
 	{
 	//neutral attack
 	attack_combo++;
@@ -410,7 +410,7 @@ function fnGuraActionAttackNeutral()
 	fnGuraStateChange(gura_states.attack_neutral);
 	};
 
-function fnGuraActionAttackDown()
+fnGuraActionAttackDown = function()
 	{
 	fnGuraActionCleanUpAttacks(true);
 	trident_object = instance_create_depth(x, y, depth-1, objGuraTridentDown);
@@ -424,7 +424,7 @@ function fnGuraActionAttackDown()
 	fnGuraStateChange(gura_states.attack_down);
 	};
 
-function fnGuraActionCleanUpAttacks(reset_combo = true)
+fnGuraActionCleanUpAttacks = function(reset_combo = true)
 	{
 	//clean up after attacking
 	animation_timer = 0;
@@ -440,7 +440,7 @@ function fnGuraActionCleanUpAttacks(reset_combo = true)
 
 #endregion
 
-function fnEnemyContactDamage()
+fnEnemyContactDamage = function()
 	{
 	if(iframes > 0)
 		{return false;};
@@ -455,7 +455,7 @@ function fnEnemyContactDamage()
 		for(var i = 0; i < ds_list_size(enemies_contacting); i++)
 			{
 			var _enemy = enemies_contacting[|i];
-			if(!hit && _enemy.hitbox_active)
+			if(!hit && _enemy.hurtbox_active)
 				{
 				hit = true;
 				var _dir = sign(x-_enemy.x);//get knocked away from the enemy
@@ -466,7 +466,7 @@ function fnEnemyContactDamage()
 				damage_number.x_speed = _dir / 2;
 				
 				fnGuraActionCleanUpAttacks();
-				iframes = 40;
+				iframes = 30;
 				knockback_time = 20;
 				animation_timer = 0;
 				alarm[0] = hp_regen_time;//reset hp regen delay

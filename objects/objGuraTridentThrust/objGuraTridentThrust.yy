@@ -32,7 +32,7 @@
     {"propertyId":{"name":"knockback_x","path":"objects/objGuraAttackParent/objGuraAttackParent.yy",},"objectId":{"name":"objGuraAttackParent","path":"objects/objGuraAttackParent/objGuraAttackParent.yy",},"value":"1.25","resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMOverriddenProperty",},
     {"propertyId":{"name":"knockback_y","path":"objects/objGuraAttackParent/objGuraAttackParent.yy",},"objectId":{"name":"objGuraAttackParent","path":"objects/objGuraAttackParent/objGuraAttackParent.yy",},"value":"-1","resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMOverriddenProperty",},
     {"propertyId":{"name":"knockback_time","path":"objects/objGuraAttackParent/objGuraAttackParent.yy",},"objectId":{"name":"objGuraAttackParent","path":"objects/objGuraAttackParent/objGuraAttackParent.yy",},"value":"10","resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMOverriddenProperty",},
-    {"propertyId":{"name":"hitbox_active","path":"objects/objGuraAttackParent/objGuraAttackParent.yy",},"objectId":{"name":"objGuraAttackParent","path":"objects/objGuraAttackParent/objGuraAttackParent.yy",},"value":"False","resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMOverriddenProperty",},
+    {"propertyId":{"name":"hurtbox_active","path":"objects/objGuraAttackParent/objGuraAttackParent.yy",},"objectId":{"name":"objGuraAttackParent","path":"objects/objGuraAttackParent/objGuraAttackParent.yy",},"value":"False","resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMOverriddenProperty",},
   ],
   "parent": {
     "name": "Attacks",

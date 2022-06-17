@@ -18,12 +18,16 @@ if(show_hitboxes)
 		{draw_rectangle_color(bbox_left,bbox_top,bbox_right-1,bbox_bottom-1,c_red,c_red,c_red,c_red,true);};
 	with(objGura.trident_object)
 		{
-		if(hitbox_active)
+		if(hurtbox_active)
 			{draw_rectangle_color(bbox_left,bbox_top,bbox_right-1,bbox_bottom-1,c_red,c_red,c_red,c_red,true);};
+		else
+			{draw_rectangle_color(bbox_left,bbox_top,bbox_right-1,bbox_bottom-1,c_yellow,c_yellow,c_yellow,c_yellow,true);};
 		};
 	with(objEnemyParent)
 		{
-		if(hitbox_active)
+		if(hurtbox_active)
 			{draw_rectangle_color(bbox_left,bbox_top,bbox_right-1,bbox_bottom-1,c_red,c_red,c_red,c_red,true);};
+		else
+			{draw_rectangle_color(bbox_left,bbox_top,bbox_right-1,bbox_bottom-1,c_yellow,c_yellow,c_yellow,c_yellow,true);};
 		};
 	};

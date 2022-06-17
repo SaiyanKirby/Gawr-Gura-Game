@@ -10,11 +10,11 @@ switch(sprite_index)
 	case sprGuraTridentThrust:
 		{
 		if(image_index > 0)
-			{hitbox_active = true;};
+			{hurtbox_active = true;};
 		else
-			{hitbox_active = false;};
+			{hurtbox_active = false;};
 		break;
 		};
 	case sprGuraTridentDown:
-		{hitbox_active = true;};
+		{hurtbox_active = true;};
 	};

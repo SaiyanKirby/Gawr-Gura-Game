@@ -40,8 +40,8 @@
     {"propertyId":{"name":"hurtbox_active","path":"objects/objEnemyParent/objEnemyParent.yy",},"objectId":{"name":"objEnemyParent","path":"objects/objEnemyParent/objEnemyParent.yy",},"value":"False","resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMOverriddenProperty",},
   ],
   "parent": {
-    "name": "Fauna Level Enemies",
-    "path": "folders/Actors/Enemies/Fauna Level Enemies.yy",
+    "name": "Deadbeat1",
+    "path": "folders/Actors/Enemies/Fauna Level Enemies/Deadbeat1.yy",
   },
   "resourceVersion": "1.0",
   "name": "objDeadbeat1",

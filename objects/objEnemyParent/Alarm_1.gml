@@ -1,3 +1,3 @@
-///@description Reactivate hurtbox
+///@description Reactivate hitbox
 
-hurtbox_active = true;
+hitbox_active = true;

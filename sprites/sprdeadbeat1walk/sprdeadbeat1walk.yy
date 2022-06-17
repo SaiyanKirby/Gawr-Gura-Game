@@ -81,8 +81,8 @@
   ],
   "nineSlice": null,
   "parent": {
-    "name": "Fauna Level Enemies",
-    "path": "folders/Actors/Enemies/Fauna Level Enemies.yy",
+    "name": "Deadbeat1",
+    "path": "folders/Actors/Enemies/Fauna Level Enemies/Deadbeat1.yy",
   },
   "resourceVersion": "1.0",
   "name": "sprDeadbeat1Walk",

@@ -23,7 +23,7 @@ if(show_gura_info)
 	{
 	with(objGura)
 		{
-		var state_name = fnGetStateName();
+		var state_name = fnGuraGetStateName();
 		var xx = padding;
 		var w = (fw * 40) + (padding * 2);
 		var h = (fh * 3) + (padding * 2);

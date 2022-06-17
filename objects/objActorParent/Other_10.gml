@@ -1,6 +1,6 @@
 /// @description Function declarations
 
-function fnActorCollide(_x = 0, _y = 0)
+fnActorCollide = function(_x = 0, _y = 0)
 	{
 	//extend for tile-based collision at some point?
 	var _collide = place_meeting(_x, _y, objSolidTile) && !place_meeting(x, y, objSolidTile);
@@ -10,7 +10,7 @@ function fnActorCollide(_x = 0, _y = 0)
 	return _collide;
 	};
 
-function fnActorIsAirborne()
+fnActorIsAirborne = function()
 	{
 	//an actor is airborne if they're not colliding with the ground,
 	var _collide = fnActorCollide(x, y + global.gravity_dir);
@@ -19,7 +19,7 @@ function fnActorIsAirborne()
 	return !_collide || _falling;
 	};
 
-function fnActorMove()
+fnActorMove = function()
 	{
 	//set up temporary variables for readability
 	var x_direction = sign(x_speed);
@@ -82,7 +82,7 @@ function fnActorMove()
 	y = clamp(round(y), 0, room_height);
 	};
 
-function fnApplyGravity()
+fnApplyGravity = function()
 	{
 	//add gravity
 	if(affected_by_gravity)
@@ -92,25 +92,9 @@ function fnApplyGravity()
 		};
 	};
 
-function fnSwitchGravity()
+fnActorIsOffScreen = function()
 	{
-	global.gravity_dir *= -1;
-	with(objActorParent)
-		{
-		if(affected_by_gravity)
-			{
-			if(image_yscale > 0)
-				{y = bbox_top;};
-			else
-				{y += bbox_bottom - bbox_top;};
-			image_yscale *= -1;
-			};
-		};
-	};
-
-function fnActorIsOffScreen()
-	{
-	if(bbox_right < global.camera_x - 8 || bbox_left > global.camera_x + global.camera_width + 8){return true;};
-	if(bbox_bottom < global.camera_y - 8 || bbox_top > global.camera_y + global.camera_height + 8){return true;};
+	if(bbox_right < global.camera_x - 16 || bbox_left > global.camera_x + global.camera_width + 16){return true;};
+	if(bbox_bottom < global.camera_y - 16 || bbox_top > global.camera_y + global.camera_height + 16){return true;};
 	return false;
 	};
