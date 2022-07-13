@@ -1,4 +1,4 @@
-if(global.guiActive)
+if(global.guiActive || global.hitstop > 0)
 	{
 	//pause everything
 	for(var a = 0; a < 12; a++)
@@ -11,7 +11,7 @@ if(global.guiActive)
 	};
 
 if(state == -1)
-	{fnDeadbeat1AI();};
+	{fnEnemyAI();};
 else if(state >= 0)
 	{
 	if(iframes > 0)
@@ -33,7 +33,7 @@ else if(state >= 0)
 		knockback_time--;
 		};
 
-	fnDeadbeat1AI();
+	fnEnemyAI();
 	
 	if(!moving)
 		{

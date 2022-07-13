@@ -1,4 +1,4 @@
-if(global.guiActive)
+if(global.guiActive || global.hitstop > 0)
 	{
 	//pause everything
 	for(var a = 0; a < 12; a++)
@@ -9,7 +9,7 @@ if(global.guiActive)
 	exit;
 	};
 
-fnDeadbeat2AI()
+fnEnemyAI()
 
 if(state > -1)
 	{

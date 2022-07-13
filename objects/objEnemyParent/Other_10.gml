@@ -15,16 +15,28 @@ Yes I know these are backwards from how fighting games do it
 but I already wrote the code this way so shut up
 */
 
+fnEnemyAI = function()
+	{
+	};
+
+fnEnemySwitchState = function()
+	{
+	};
+
 fnHurtEnemy = function(_damage = 1, _knockback_x = 1, _knockback_y = -1, _knockback_time, _hitbox_disable_time = 30)
 	{
 	if(!hitbox_active)
 		{return false;};
-
+	
+	hp -= _damage;
+	
+	//global.hitstop = 3;
+	//global.screen_shake = 5;
+	
 	var damage_number = instance_create_depth(x, bbox_top, depth-10, objDamageNumber)
 	damage_number.damage = _damage;
 	damage_number.x_speed = sign(_knockback_x) / 2;
 	
-	hp -= _damage;
 	if(hp > 0)
 		{
 		knockback_time = _knockback_time;

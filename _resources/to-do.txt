@@ -4,7 +4,6 @@
 		- Gun attack
 		- ???
 	- Fix collision code for fallthrough tiles
-	- Hitstop and screenshake on hits
 
 - Pause Menu
 	- Add "Skip Cutscene" button (when a cutscene is active)
@@ -44,6 +43,7 @@ Levels:
 	- Fauna
 		- Background(s)
 		- Tileset(s)
+		- Enemies
 		- BGM
 		- Mechanic: Corpse flower jump pads
 			- Jump on it to bounce upwards
@@ -55,6 +55,7 @@ Levels:
 	- Mumei
 		- Background(s)
 		- Tileset(s)
+		- Enemies
 		- BGM
 		- (What mechanic?)
 		- Boss Fight
@@ -63,6 +64,7 @@ Levels:
 	- Sana
 		- Background(s)
 		- Tileset(s)
+		- Enemies
 		- BGM
 		- Mechanic: Reversed gravity
 		- Boss Fight
@@ -71,6 +73,7 @@ Levels:
 	- Kronii
 		- Background(s)
 		- Tileset(s)
+		- Enemies
 		- BGM
 		- Mechanic: Slow down time
 		- Boss Fight
@@ -79,6 +82,7 @@ Levels:
 	- Bae
 		- Background(s)
 		- Tileset(s)
+		- Enemies
 		- BGM
 		- (What mechanic?)
 		- Final Boss Fight(s)

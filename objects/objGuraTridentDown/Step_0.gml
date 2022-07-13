@@ -1,4 +1,4 @@
-if(global.guiActive)
+if(global.guiActive || global.hitstop > 0)
 	{
 	//pause everything
 	for(var a = 0; a < 12; a++)

@@ -1,3 +1,3 @@
 ///@description Respawn
 
-fnDeadbeat2SwitchState(-1);
+fnEnemySwitchState(-1);

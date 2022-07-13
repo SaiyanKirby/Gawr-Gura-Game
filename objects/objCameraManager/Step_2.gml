@@ -1,7 +1,21 @@
 /// @description Move Camera
 
+if(layer_exists("ScreenShake"))
+	{
+	var screenshake_layer = layer_get_id("ScreenShake");
+	var screenshake_fx = layer_get_fx(screenshake_layer);
+	fx_set_parameter(screenshake_fx, "g_Magnitude", global.screen_shake);
+	if(global.guiActive)
+		{layer_set_visible(screenshake_layer, false);};
+	else
+		{layer_set_visible(screenshake_layer, true);};
+	};
+
 if(global.guiActive)
 	{exit;};
+
+if(global.hitstop > 0)
+	{global.hitstop--;};
 
 //follow an instance
 if(instance_exists(follow))
@@ -39,3 +53,8 @@ camera_set_view_pos(camera, global.camera_x, global.camera_y);
 
 with(objParallaxBackground)
 	{fnMoveParallaxLayer()};
+
+if(global.screen_shake > 0.05)
+	{global.screen_shake = lerp(global.screen_shake, 0, 0.1);};
+else
+	{global.screen_shake = 0;};

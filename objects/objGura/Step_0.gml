@@ -1,4 +1,4 @@
-if(global.guiActive)
+if(global.guiActive || global.hitstop > 0)
 	{
 	//pause everything
 	for(var a = 0; a < 12; a++)
@@ -8,6 +8,10 @@ if(global.guiActive)
 		};
 	exit;
 	};
+
+/*rainbow_outline_angle--;
+if(rainbow_outline_angle <= 0)
+	{rainbow_outline_angle = 360;};*/
 
 if(!moving)//slow down if not moving
 	{

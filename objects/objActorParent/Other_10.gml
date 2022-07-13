@@ -2,12 +2,26 @@
 
 fnActorCollide = function(_x = 0, _y = 0)
 	{
-	//extend for tile-based collision at some point?
-	var _collide = place_meeting(_x, _y, objSolidTile) && !place_meeting(x, y, objSolidTile);
-	//dont consider collisions if you're already inside an object ^
-	if(_y <= 0 || _y >= room_height)
-		{_collide = true;};
-	return _collide;
+	if(_y <= 0 || _y >= room_height)//hitting the edges of the room
+		{return true;};
+	var _collided = false;
+	ds_list_clear(collisions);
+	var _number = instance_place_list(_x, _y, objSolidTile, collisions, true);
+	if(_number > 0)
+		{
+		for(var i = 0; i < ds_list_size(collisions); i++)
+			{
+			_collided = place_meeting(_x, _y, collisions[|i]) && !place_meeting(x, y, collisions[|i]);
+			//dont consider collisions if you're already inside an object ^
+			if(_collided = true)
+				{
+				return true;
+				break;
+				};
+			};
+		};
+	else
+		{return false;};
 	};
 
 fnActorIsAirborne = function()

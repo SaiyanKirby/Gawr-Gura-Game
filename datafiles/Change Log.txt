@@ -76,3 +76,9 @@
 - Added gravestones for the skeletons. They rise out of the graves when they (re)spawn.
 - Added a second skeleton enemy, based off of the Q music video.
 	- He doesn't move, but swings a baseball bat at you when you're close enough
+
+[Build_0010]
+- Under the hood work:
+	- Added an outline shader from an earlier project, and modified it for a possible use later.
+	- It's currently unused.
+- Added hitstop and the screen shakes on getting hit

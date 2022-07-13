@@ -466,6 +466,8 @@ fnEnemyContactDamage = function()
 				damage_number.x_speed = _dir / 2;
 				
 				fnGuraActionCleanUpAttacks();
+				global.hitstop = 6 * _enemy.damage;
+				global.screen_shake = 6 * _enemy.damage;
 				iframes = 30;
 				knockback_time = 20;
 				animation_timer = 0;
